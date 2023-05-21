@@ -8,10 +8,12 @@
   ],
   "main": "./dist/rad-ts.cjs",
   "module": "./dist/rad-ts.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": "./dist/rad-ts.js",
-      "require": "./dist/rad-ts.cjs"
+      "require": "./dist/rad-ts.cjs",
+      "types":"./dist/index.d.ts"
     }
   },
   "scripts": {
@@ -22,7 +24,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "vite-plugin-dts": "^2.3.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
