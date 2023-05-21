@@ -1,10 +1,10 @@
 {
-  "name": "rad-ts",
+  "name": "@rad/rad-ts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "dist/*"
+    "dist"
   ],
   "main": "./dist/rad-ts.cjs",
   "module": "./dist/rad-ts.js",
@@ -12,8 +12,7 @@
   "exports": {
     ".": {
       "import": "./dist/rad-ts.js",
-      "require": "./dist/rad-ts.cjs",
-      "types":"./dist/index.d.ts"
+      "require": "./dist/rad-ts.cjs"
     }
   },
   "scripts": {
