@@ -3,6 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/rad-ts.cjs",
+  "module": "./dist/rad-ts.js",
+  "exports": {
+    ".": {
+      "import": "./dist/rad-ts.js",
+      "require": "./dist/rad-ts.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
