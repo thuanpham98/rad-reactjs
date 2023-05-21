@@ -1,0 +1,21 @@
+:root {
+  --layer-loading: 18;
+  --layer-message: 16;
+  --layer-model-content: 14;
+  --layer-model: 12;
+  --layer-sidebar: 10;
+  --layer-overlay: 8;
+  --layer-dropdown-menu: 6;
+
+  --breakpoint-tablet: 600px;
+  --breakpoint-laptop: 1024px;
+}
+
+.bg-scrolling-element-when-modal-active {
+  /* when modal active */
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+  overflow: hidden;
+  /* Other browsers */
+  overscroll-behavior: none;
+}
