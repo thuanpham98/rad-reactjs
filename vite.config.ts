@@ -7,18 +7,10 @@ export default defineConfig({
   plugins: [react()],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.js'),
+      entry: resolve(__dirname, 'src/index.ts'),
       fileName: 'rad-ts',
       formats: ['cjs', 'es'],
       name: 'rad-ts',
-    },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: {
-          react: 'React'
-        }
-      }
     },
     emptyOutDir:true,
     outDir:"./dist",
