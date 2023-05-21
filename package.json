@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "files": [
-    "dist"
+    "dist/*"
   ],
   "main": "./dist/rad-ts.cjs",
   "module": "./dist/rad-ts.js",

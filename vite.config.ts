@@ -12,6 +12,14 @@ export default defineConfig({
       formats: ['cjs', 'es'],
       name: 'rad-ts',
     },
+    rollupOptions: {
+      external: ['react', 'react-dom'],
+      output: {
+        globals: {
+          react: 'React'
+        }
+      }
+    },
     emptyOutDir:true,
     outDir:"./dist",
     minify:true,
