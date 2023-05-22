@@ -116,6 +116,7 @@ export const RdAppExtends: FC<{
   children: React.ReactNode;
   appProps: RdAppProps<RdModule, any, RdConfig>;
 }) => {
+
   const _blocRdApp = useMemo(() => {
     return new RdBloc<RdAppExtendsState>({
       initState: {
