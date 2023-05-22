@@ -21,6 +21,7 @@ import { RdOverlay } from "../rad-components/overlay/RdOverlay";
 import { queueScheduler } from "rxjs";
 import "../rad-style";
 import { ErrorModel } from "../rad-models/ErrorModel";
+import { QueryClient } from "@tanstack/react-query";
 
 const RdAppContext = createContext<RdAppProps<RdModule, any, RdConfig>>(
   undefined!,
@@ -230,7 +231,15 @@ export const RdAppExtends: FC<{
   return (
     <I18nextProvider i18n={rdI18n}>
       <RdViewport>
-        <RdQueryClient>
+        <RdQueryClient
+          queryClient={
+            new QueryClient({
+              defaultOptions: {
+                queries: { refetchOnWindowFocus: false, retry: false },
+              },
+            })
+          }
+        >
           <RdAppContext.Provider value={appProps}>
             {/* handler UI message */}
             {_state.showMessage &&
@@ -241,7 +250,7 @@ export const RdAppExtends: FC<{
               createPortal(
                 appProps.configs?.loading,
                 document.body,
-                "rd-loader",
+                "rd-loader"
               )}
 
             {/* queue potal */}
@@ -255,7 +264,7 @@ export const RdAppExtends: FC<{
               createPortal(
                 rdBottomSheetCompo.value,
                 document.body,
-                `rd-bottom-sheet`,
+                `rd-bottom-sheet`
               )}
             {children}
           </RdAppContext.Provider>

@@ -1905,12 +1905,7 @@ const ta = ({
   }, /* @__PURE__ */ We.createElement(i.Provider, {
     value: n
   }, e));
-}, ra = ({ children: n }) => {
-  const e = new Zi({
-    defaultOptions: { queries: { refetchOnWindowFocus: !1, retry: !1 } }
-  });
-  return /* @__PURE__ */ K.jsx(ta, { client: e, children: n });
-}, Ln = ir({
+}, ra = ({ children: n, queryClient: e }) => /* @__PURE__ */ K.jsx(ta, { client: e, children: n }), Ln = ir({
   height: window.innerHeight,
   width: window.innerWidth
 }), na = ({
@@ -5891,21 +5886,31 @@ const os = ({
     }), () => {
       t.stream.complete();
     };
-  }, []), /* @__PURE__ */ K.jsx(Oa, { i18n: ko, children: /* @__PURE__ */ K.jsx(na, { children: /* @__PURE__ */ K.jsx(ra, { children: /* @__PURE__ */ K.jsxs(dr.Provider, { value: e, children: [
-    r.showMessage && at(tr.value, document.body, "rd-message"),
-    r.isLoading && at(
-      (a = e.configs) == null ? void 0 : a.loading,
-      document.body,
-      "rd-loader"
-    ),
-    r.modals.length > 0 && r.modals.map((o, s) => o),
-    r.showBottomSheet && at(
-      nr.value,
-      document.body,
-      "rd-bottom-sheet"
-    ),
-    n
-  ] }) }) }) });
+  }, []), /* @__PURE__ */ K.jsx(Oa, { i18n: ko, children: /* @__PURE__ */ K.jsx(na, { children: /* @__PURE__ */ K.jsx(
+    ra,
+    {
+      queryClient: new Zi({
+        defaultOptions: {
+          queries: { refetchOnWindowFocus: !1, retry: !1 }
+        }
+      }),
+      children: /* @__PURE__ */ K.jsxs(dr.Provider, { value: e, children: [
+        r.showMessage && at(tr.value, document.body, "rd-message"),
+        r.isLoading && at(
+          (a = e.configs) == null ? void 0 : a.loading,
+          document.body,
+          "rd-loader"
+        ),
+        r.modals.length > 0 && r.modals.map((o, s) => o),
+        r.showBottomSheet && at(
+          nr.value,
+          document.body,
+          "rd-bottom-sheet"
+        ),
+        n
+      ] })
+    }
+  ) }) });
 }, ss = () => or(dr);
 function us(n, e, t) {
   const r = document.getElementById(`${e}`);
