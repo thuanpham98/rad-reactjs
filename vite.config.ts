@@ -35,5 +35,6 @@ export default defineConfig({
     minify:true,
     cssMinify:true,
     sourcemap:true,
+    cssCodeSplit:true,
   }
 })
