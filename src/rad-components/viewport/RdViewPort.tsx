@@ -2,12 +2,11 @@ import React, {
   createContext,
   FC,
   useCallback,
-  useContext,
   useEffect,
   useState,
 } from "react";
 
-interface RdViewportProps {
+export interface RdViewportProps {
   width: number;
   height: number;
 }
@@ -63,7 +62,3 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
     </RdViewportContext.Provider>
   );
 };
-
-export function useRdViewport() {
-  return useContext<RdViewportProps>(RdViewportContext);
-}

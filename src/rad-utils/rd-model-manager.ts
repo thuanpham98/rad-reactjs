@@ -7,8 +7,7 @@ export class RdModelsManager extends RdManager<RdModel<any>> {
 
   constructor() {
     super();
-    if (RdModelsManager._instance) {
-    } else {
+    if (!RdModelsManager._instance) {
       this.key = Symbol("RdModelsManager");
       RdModelsManager._instance = this;
       this.m = new Map<string, RdModel<any>>();

@@ -16,10 +16,10 @@ export const RdHighlightedText: React.FC<RdHighlightedTextProps> = ({
   if (!highlight.trim()) {
     return <span>{text}</span>;
   }
-  const regex = new RegExp(
-    `(${highlight.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
-    "gi",
-  );
+  // const regex = new RegExp(
+  //   `(${highlight.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
+  //   "gi",
+  // );
   const parts = text.split("");
 
   return (

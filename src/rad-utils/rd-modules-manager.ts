@@ -6,8 +6,7 @@ export class RdModulesManager<T extends RdModule> extends RdManager<T> {
   private static _instance: RdModulesManager<RdModule>;
 
   constructor() {
-    if (RdModulesManager._instance) {
-    } else {
+    if (!RdModulesManager._instance) {
       super();
       this.key = Symbol("RdModulesManager");
       RdModulesManager._instance = this;
