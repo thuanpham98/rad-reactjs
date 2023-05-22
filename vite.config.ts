@@ -33,8 +33,8 @@ export default defineConfig({
     emptyOutDir:true,
     outDir:"dist",
     minify:true,
-    cssMinify:true,
+    cssMinify:false,
     sourcemap:true,
-    cssCodeSplit:true,
+    cssCodeSplit:false,
   }
 })
