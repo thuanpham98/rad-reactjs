@@ -14,7 +14,7 @@ export const RdHighlightedText: React.FC<RdHighlightedTextProps> = ({
   classText,
 }) => {
   if (!highlight.trim()) {
-    return <span>{text}</span>;
+    return <span className={classText}>{text}</span>;
   }
   // const regex = new RegExp(
   //   `(${highlight.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`,
