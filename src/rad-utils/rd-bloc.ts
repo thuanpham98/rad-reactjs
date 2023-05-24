@@ -1,19 +1,19 @@
-import { BehaviorSubject } from "rxjs";
+import { RdStream } from "./rd-stream";
 
 export class RdBloc<T> {
-  public stream: BehaviorSubject<T>;
+  public stream: RdStream<T>;
   private _state: T;
 
   constructor({
     initState,
-    callback = () => {},
+    callback,
   }: {
     initState: T;
     callback?: () => void | Promise<void>;
   }) {
     this._state = initState;
-    this.stream = new BehaviorSubject<T>(this._state);
-    callback();
+    this.stream = new RdStream<T>(this._state);
+    callback&&callback();
   }
 
   set state(s: T) {

@@ -29,3 +29,12 @@ export declare abstract class RdManager<T> extends RdCore {
     abstract get length(): number;
     abstract clear(): void;
 }
+export declare abstract class RdAbstractStream<T> extends RdCore {
+    protected abstract key: symbol;
+}
+export declare abstract class RdAbstractEvent<T> extends RdCore {
+    protected abstract key: symbol;
+    abstract next(v: T): void;
+    abstract subscribe(handler: (v: T) => void): void;
+    abstract complete(): void;
+}
