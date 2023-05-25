@@ -1,35 +1,47 @@
-import { RdAbstractEvent } from "../rad-cores";
+// import { RdObserver, RdSubject } from "../rad-cores";
+import { RdBehaviorSubject, RdBehaviourObserver } from "./rd-behaviour-subject";
+// import { BehaviorSubject } from 'rxjs';
+// class RdStreamEvent<T> extends CustomEvent<T>{
 
-class RdStreamEvent<T> extends CustomEvent<T>{
+// }
 
-}
-
-export class RdStream<T> extends RdAbstractEvent<T> {
+export class RdStream<T>{
     public key: symbol;
-    public value: RdStreamEvent<T>;
-    private  stream: EventTarget;
+    // private  stream: EventTarget;
+    private subject: RdBehaviorSubject<T>;
+    private closed = false;
+    // private observers : RdBehaviourObserver<T>[];
 
     constructor(init: T) {
-        super();
         this.key = Symbol(Date.now());
-        this.value = new RdStreamEvent<T>(this.key.toString(), { detail: init, });
-        this.stream = new EventTarget();
+        this.subject = new RdBehaviorSubject<T>(init);
+        // this.value = new RdStreamEvent<T>(this.key.toString(), { detail: init, });
+        // this.stream = new EventTarget();
     }
 
     public next(t: T) {
-        this.value = new RdStreamEvent<T>(this.key.toString(), { detail: t, });
-        this.stream.dispatchEvent(this.value);
+        if (!this.closed) {
+            this.subject.value = t;
+            this.subject.notify();
+        }
+
+        // this.value = new RdStreamEvent<T>(this.key.toString(), { detail: t, });
+        // this.stream.dispatchEvent(this.value);
     }
 
     public subscribe(handler: (v: T) => void): void {
-        this.stream.addEventListener(this.key.toString(), (e: any) => {
-            handler(e.detail);
-        })
+        if (!this.closed) {
+            this.subject.subscribe(new RdBehaviourObserver<T>(handler));
+        }
+
     }
 
+
     public complete() {
-        this.stream.removeEventListener(this.key.toString(), () => {
-           console.log();
-        });
+        if (!this.closed) {
+            this.subject.close();
+            this.closed = true;
+        }
+
     }
 }

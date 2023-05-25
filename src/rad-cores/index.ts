@@ -30,14 +30,15 @@ export abstract class RdManager<T> extends RdCore {
   abstract clear(): void;
 }
 
-export abstract class RdAbstractStream<T> extends RdCore{
+export abstract class RdSubject<T> extends RdCore {
   protected abstract key: symbol;
+  abstract notify():void;
+  abstract subscribe(o: RdObserver<T>): void;
+  abstract unsubcrise(o: RdObserver<T>) :void;
 }
 
-export abstract class RdAbstractEvent<T> extends RdCore {
+export abstract class RdObserver<T> extends RdCore{
   protected abstract key: symbol;
-  abstract next(v:T):void;
-  abstract subscribe(handler: (v: T) => void): void;
-  abstract complete() :void;
-    
+  abstract getName(): string;
+  abstract update(s: RdSubject<T>) : void;
 }
