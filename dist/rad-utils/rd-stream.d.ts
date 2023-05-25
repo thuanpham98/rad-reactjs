@@ -1,13 +1,9 @@
-import { RdAbstractEvent } from "../rad-cores";
-declare class RdStreamEvent<T> extends CustomEvent<T> {
-}
-export declare class RdStream<T> extends RdAbstractEvent<T> {
+export declare class RdStream<T> {
     key: symbol;
-    value: RdStreamEvent<T>;
-    private stream;
+    private subject;
+    private closed;
     constructor(init: T);
     next(t: T): void;
     subscribe(handler: (v: T) => void): void;
     complete(): void;
 }
-export {};
