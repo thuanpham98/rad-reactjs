@@ -1,5 +1,5 @@
 import { RdManager, RdModel } from "../rad-cores";
-export declare class RdModelsManager extends RdManager<RdModel<any>> {
+export declare class RdModelsManager extends RdManager<RdModel<NonNullable<unknown>>> {
     private m;
     protected key: symbol;
     private static _instance;
@@ -7,15 +7,15 @@ export declare class RdModelsManager extends RdManager<RdModel<any>> {
     /**
      * use
      */
-    use(m: RdModel<any>): RdManager<RdModel<any>>;
+    use(m: RdModel<NonNullable<unknown>>): RdManager<RdModel<NonNullable<unknown>>>;
     /**
      * remove
      */
-    remove(name: string): RdManager<RdModel<any>>;
+    remove(name: string): RdManager<RdModel<NonNullable<unknown>>>;
     /**
      * getMoels
      */
-    get<T2 extends RdModel<any>>(name: string): T2 | undefined;
+    get<T2 extends RdModel<NonNullable<unknown>>>(name: string): T2;
     /**
      * length
      */

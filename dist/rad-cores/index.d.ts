@@ -25,7 +25,7 @@ export declare abstract class RdManager<T> extends RdCore {
     protected abstract key: symbol;
     abstract use(m: T): RdManager<T>;
     abstract remove(name: string): RdManager<T>;
-    abstract get<T2 extends T>(name: string): T2 | undefined;
+    abstract get<T2 extends T>(name: string): T2;
     abstract get length(): number;
     abstract clear(): void;
 }

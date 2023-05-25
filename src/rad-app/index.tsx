@@ -26,7 +26,7 @@ import { QueryClient } from "@tanstack/react-query";
 const RdAppContext = createContext<RdAppProps<RdModule, any, RdConfig>>(
   undefined!,
 );
-interface RdAppProps<M extends RdModule, P , RdConfig> {
+interface RdAppProps<M extends RdModule, P, RdConfig> {
   [n: string]: any;
   modules?: RdManager<M>;
   plugins?: P;
@@ -116,7 +116,6 @@ export const RdAppExtends: FC<{
   children: React.ReactNode;
   appProps: RdAppProps<RdModule, any, RdConfig>;
 }) => {
-
   const _blocRdApp = useMemo(() => {
     return new RdBloc<RdAppExtendsState>({
       initState: {
@@ -150,7 +149,9 @@ export const RdAppExtends: FC<{
       if (v === null) {
         if (countQueue > 0) {
           countQueue--;
-          const currentModel = document.getElementById(`rd-modals-${countQueue}`);
+          const currentModel = document.getElementById(
+            `rd-modals-${countQueue}`,
+          );
           currentModel!.firstElementChild!.className =
             "column animation-faded--out";
           setTimeout(() => {
@@ -251,7 +252,7 @@ export const RdAppExtends: FC<{
               createPortal(
                 appProps.configs?.loading,
                 document.body,
-                "rd-loader"
+                "rd-loader",
               )}
 
             {/* queue potal */}
@@ -265,7 +266,7 @@ export const RdAppExtends: FC<{
               createPortal(
                 rdBottomSheetCompo.value,
                 document.body,
-                `rd-bottom-sheet`
+                `rd-bottom-sheet`,
               )}
             {children}
           </RdAppContext.Provider>
@@ -311,7 +312,7 @@ export function buildRdRootElement(
       onRecoverableError(error: any) {
         console.error(error);
       },
-    }
+    },
   );
   return rdRoot;
 }

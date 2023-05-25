@@ -5612,10 +5612,8 @@ class hi extends uo {
   }
 }
 class fo {
-  // private observers : RdBehaviourObserver<T>[];
   constructor(e) {
     Q(this, "key");
-    // private  stream: EventTarget;
     Q(this, "subject");
     Q(this, "closed", !1);
     this.key = Symbol(Date.now()), this.subject = new hi(e);
@@ -6367,7 +6365,9 @@ const Vo = ({
       if (o === null) {
         if (s > 0) {
           s--;
-          const u = document.getElementById(`rd-modals-${s}`);
+          const u = document.getElementById(
+            `rd-modals-${s}`
+          );
           u.firstElementChild.className = "column animation-faded--out", setTimeout(() => {
             t.state.modals = t.state.modals.slice(
               0,
@@ -6482,6 +6482,8 @@ const Pe = class extends di {
    * getMoels
    */
   get(t) {
+    if (this.m.get(t) === void 0)
+      throw TypeError("Do not exist model");
     return this.m.get(t);
   }
   /**
@@ -6535,6 +6537,8 @@ const Ce = class extends di {
    * getModule
    */
   get(t) {
+    if (this.m.get(t) === void 0)
+      throw TypeError("Do not exist model");
     return this.m.get(t);
   }
   /**
@@ -6658,6 +6662,8 @@ export {
   Oi as ErrorModel,
   qo as RdApp,
   Vo as RdAppExtends,
+  hi as RdBehaviorSubject,
+  co as RdBehaviourObserver,
   ho as RdBloc,
   Ue as RdCore,
   Go as RdHighlightedText,
@@ -6669,10 +6675,13 @@ export {
   Vt as RdModelsManager,
   Mo as RdModule,
   Kt as RdModulesManager,
+  lo as RdObserver,
   Lo as RdOverlay,
   Fa as RdQueryClient,
   Jo as RdSessionStorage,
   fi as RdStorage,
+  fo as RdStream,
+  uo as RdSubject,
   Na as RdViewport,
   $n as RdViewportContext,
   Wo as buildRdRootElement,

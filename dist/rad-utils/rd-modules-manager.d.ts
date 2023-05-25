@@ -15,7 +15,7 @@ export declare class RdModulesManager<T extends RdModule> extends RdManager<T> {
     /**
      * getModule
      */
-    get<T2 extends T>(name: string): T2 | undefined;
+    get<T2 extends T>(name: string): T2;
     /**
      * length
      */

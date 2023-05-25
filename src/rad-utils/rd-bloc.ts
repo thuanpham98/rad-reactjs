@@ -13,7 +13,7 @@ export class RdBloc<T> {
   }) {
     this._state = initState;
     this.stream = new RdStream<T>(this._state);
-    callback&&callback();
+    callback && callback();
   }
 
   set state(s: T) {

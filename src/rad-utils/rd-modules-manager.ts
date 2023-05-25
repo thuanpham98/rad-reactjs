@@ -36,8 +36,12 @@ export class RdModulesManager<T extends RdModule> extends RdManager<T> {
   /**
    * getModule
    */
-  public get<T2 extends T>(name: string): T2 | undefined {
-    return this.m.get(name) as T2 | undefined;
+  public get<T2 extends T>(name: string): T2 {
+    const ret = this.m.get(name);
+    if (ret === undefined) {
+      throw TypeError("Do not exist model");
+    }
+    return this.m.get(name) as T2;
   }
 
   /**
