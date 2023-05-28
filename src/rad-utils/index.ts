@@ -8,3 +8,4 @@ export { RdLocalStorage, RdSessionStorage } from "./rd-storages";
 export { rdCreateWorker } from "./rd-worker";
 export { RdBehaviorSubject, RdBehaviourObserver } from "./rd-behaviour-subject";
 export { RdStream } from "./rd-stream";
+export { RdLogger, RdLoggerDecorator } from "./rd-logger";

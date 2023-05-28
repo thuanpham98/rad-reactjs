@@ -1,6 +1,6 @@
 import { RdStorage } from "../rad-cores";
 export declare class RdLocalStorage extends RdStorage {
-    key: symbol;
+    readonly key: symbol;
     constructor();
     get sizeStorage(): number;
     getItem({ key }: {
@@ -16,7 +16,7 @@ export declare class RdLocalStorage extends RdStorage {
     clearStorage(): void;
 }
 export declare class RdSessionStorage extends RdStorage {
-    key: symbol;
+    readonly key: symbol;
     constructor();
     get sizeStorage(): number;
     getItem({ key }: {

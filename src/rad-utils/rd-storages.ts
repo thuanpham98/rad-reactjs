@@ -1,10 +1,10 @@
 import { RdStorage } from "../rad-cores";
 
 export class RdLocalStorage extends RdStorage {
-  public key: symbol;
+  public readonly key: symbol;
   constructor() {
     super();
-    this.key = Symbol("WrapLocalStorage");
+    this.key = Symbol("RdLocalStorage");
   }
   public get sizeStorage(): number {
     return localStorage.length;
@@ -27,11 +27,11 @@ export class RdLocalStorage extends RdStorage {
 }
 
 export class RdSessionStorage extends RdStorage {
-  public key: symbol;
+  public readonly key: symbol;
 
   constructor() {
     super();
-    this.key = Symbol("WrapSessionStorage");
+    this.key = Symbol("RdSessionStorage");
   }
   public get sizeStorage(): number {
     return sessionStorage.length;

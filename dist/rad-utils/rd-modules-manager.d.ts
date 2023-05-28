@@ -1,7 +1,7 @@
 import { RdManager, RdModule } from "../rad-cores";
 export declare class RdModulesManager<T extends RdModule> extends RdManager<T> {
     private m;
-    protected key: symbol;
+    readonly key: symbol;
     private static _instance;
     constructor();
     /**

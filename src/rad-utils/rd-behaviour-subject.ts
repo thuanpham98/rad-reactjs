@@ -1,7 +1,7 @@
 import { RdObserver, RdSubject } from "../rad-cores";
 
 export class RdBehaviourObserver<T> extends RdObserver<T> {
-  public key: symbol;
+  public readonly key: symbol;
   public handler?: (v: T) => void;
   constructor(h?: (v: T) => void) {
     super();

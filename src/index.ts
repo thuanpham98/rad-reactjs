@@ -23,6 +23,8 @@ export {
   RdModel,
   RdObserver,
   RdSubject,
+  RdDecorator,
+  RdOperation,
 } from "./rad-cores";
 export type { RdConfig } from "./rad-utils";
 export {
@@ -38,6 +40,8 @@ export {
   rdCreateWorker,
   rdI18n,
   useRdTranslate,
+  RdLogger,
+  RdLoggerDecorator,
 } from "./rad-utils";
 export { ErrorModel } from "./rad-models/ErrorModel";
 export {

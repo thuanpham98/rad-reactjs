@@ -2,15 +2,15 @@ import { RdManager, RdModule } from "../rad-cores";
 
 export class RdModulesManager<T extends RdModule> extends RdManager<T> {
   private m!: Map<string, T>;
-  protected key!: symbol;
+  readonly key!: symbol;
   private static _instance: RdModulesManager<RdModule>;
 
   constructor() {
     if (!RdModulesManager._instance) {
       super();
+      this.m = new Map<string, T>();
       this.key = Symbol("RdModulesManager");
       RdModulesManager._instance = this;
-      this.m = new Map<string, T>();
     }
     return RdModulesManager._instance as RdModulesManager<T>;
   }

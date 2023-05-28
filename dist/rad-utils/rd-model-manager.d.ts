@@ -1,7 +1,7 @@
 import { RdManager, RdModel } from "../rad-cores";
 export declare class RdModelsManager extends RdManager<RdModel<NonNullable<unknown>>> {
     private m;
-    protected key: symbol;
+    key: symbol;
     private static _instance;
     constructor();
     /**

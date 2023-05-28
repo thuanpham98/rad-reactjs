@@ -16,11 +16,11 @@ export class RdBloc<T> {
     callback && callback();
   }
 
-  set state(s: T) {
+  public set state(s: T) {
     this._state = s;
   }
 
-  get state(): T {
+  public get state(): T {
     return this._state;
   }
 
