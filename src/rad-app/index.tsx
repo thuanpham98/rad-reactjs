@@ -216,7 +216,7 @@ export const RdAppExtends: FC<{
     });
 
     // turn of loading and component of old page
-    window.addEventListener("popstate", () => {
+    window && window.addEventListener("popstate", () => {
       if (_blocRdApp.state.isLoading || countQueue > 0) {
         rdLoading(false);
         for (let index = 0; index < countQueue; index++) {
@@ -227,6 +227,9 @@ export const RdAppExtends: FC<{
 
     return () => {
       _blocRdApp.stream.complete();
+      window && window.removeEventListener('popstate',()=>{
+        console.log("done popstate");
+      });
     };
   }, []);
 
@@ -316,3 +319,40 @@ export function buildRdRootElement(
   );
   return rdRoot;
 }
+
+// export function buildRdHydrateRootElement(
+//   prefixComponent: string,
+//   mainId: string,
+//   constrant?: {
+//     minHeight?: string;
+//     minWidth?: string;
+//     maxHeight?: string;
+//     maxWidth?: string;
+//   },
+// ): ReactDOM.Root {
+//   const rootEle = document.getElementById(`${mainId}`) as HTMLElement;
+//   if (constrant && rootEle) {
+//     if (constrant.minHeight) {
+//       rootEle.style.minHeight = constrant.minHeight;
+//     }
+//     if (constrant.minWidth) {
+//       rootEle.style.minWidth = constrant.minWidth;
+//     }
+//     if (constrant.maxHeight) {
+//       rootEle.style.maxHeight = constrant.maxHeight;
+//     }
+//     if (constrant.maxWidth) {
+//       rootEle.style.maxWidth = constrant.maxWidth;
+//     }
+//   }
+//   const rdRoot = ReactDOM.hydrateRoot(
+//     document.getElementById(`${mainId}`) as HTMLElement,
+//     {
+//       identifierPrefix: `${prefixComponent}`,
+//       onRecoverableError(error: any) {
+//         console.error(error);
+//       },
+//     },
+//   );
+//   return rdRoot;
+// }

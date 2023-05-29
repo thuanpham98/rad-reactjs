@@ -12,8 +12,8 @@ export interface RdViewportProps {
 }
 
 export const RdViewportContext = createContext<RdViewportProps>({
-  height: window.innerHeight,
-  width: window.innerWidth,
+  height: 0,
+  width: 0,
 });
 
 export const RdViewport: FC<{ children: React.ReactNode }> = ({
@@ -22,8 +22,8 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
   children: React.ReactNode;
 }) => {
   const [dimension, setDimension] = useState<RdViewportProps>({
-    height: window.innerHeight,
-    width: window.innerWidth,
+    height: 0,
+    width: 0,
   });
   const handleResize = useCallback(
     () =>
@@ -31,13 +31,13 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
         height: window.innerHeight,
         width: window.innerWidth,
       }),
-    [dimension],
+    [],
   );
 
   useEffect(() => {
     handleResize();
-    window.addEventListener("resize", handleResize);
-    document.addEventListener(
+    window && window.addEventListener("resize", handleResize);
+    window && window.addEventListener(
       "touchstart",
       (e) => {
         if (e.touches.length > 1) {
@@ -49,8 +49,8 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
       },
     );
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("touchstart", () => {
+      window && window.removeEventListener("resize", handleResize);
+      window && window.removeEventListener("touchstart", () => {
         console.log("done touch start");
       });
     };
