@@ -2386,8 +2386,8 @@ const Na = ({ children: n, queryClient: e }) => /* @__PURE__ */ J.jsx(Sa, { clie
     width: 0
   }), r = Wi(
     () => t({
-      height: window.innerHeight,
-      width: window.innerWidth
+      height: window && window.innerHeight,
+      width: window && window.innerWidth
     }),
     []
   );

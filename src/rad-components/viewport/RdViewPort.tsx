@@ -28,8 +28,8 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
   const handleResize = useCallback(
     () =>
       setDimension({
-        height: window.innerHeight,
-        width: window.innerWidth,
+        height: window  && window.innerHeight,
+        width: window && window.innerWidth,
       }),
     [],
   );
