@@ -37,22 +37,24 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
   useEffect(() => {
     handleResize();
     window && window.addEventListener("resize", handleResize);
-    window && window.addEventListener(
-      "touchstart",
-      (e) => {
-        if (e.touches.length > 1) {
-          e.preventDefault();
-        }
-      },
-      {
-        passive: false,
-      },
-    );
+    window &&
+      window.addEventListener(
+        "touchstart",
+        (e) => {
+          if (e.touches.length > 1) {
+            e.preventDefault();
+          }
+        },
+        {
+          passive: false,
+        },
+      );
     return () => {
       window && window.removeEventListener("resize", handleResize);
-      window && window.removeEventListener("touchstart", () => {
-        console.log("done touch start");
-      });
+      window &&
+        window.removeEventListener("touchstart", () => {
+          console.log("done touch start");
+        });
     };
   }, []);
 

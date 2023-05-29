@@ -216,20 +216,22 @@ export const RdAppExtends: FC<{
     });
 
     // turn of loading and component of old page
-    window && window.addEventListener("popstate", () => {
-      if (_blocRdApp.state.isLoading || countQueue > 0) {
-        rdLoading(false);
-        for (let index = 0; index < countQueue; index++) {
-          rdModal(null);
+    window &&
+      window.addEventListener("popstate", () => {
+        if (_blocRdApp.state.isLoading || countQueue > 0) {
+          rdLoading(false);
+          for (let index = 0; index < countQueue; index++) {
+            rdModal(null);
+          }
         }
-      }
-    });
+      });
 
     return () => {
       _blocRdApp.stream.complete();
-      window && window.removeEventListener('popstate',()=>{
-        console.log("done popstate");
-      });
+      window &&
+        window.removeEventListener("popstate", () => {
+          console.log("done popstate");
+        });
     };
   }, []);
 

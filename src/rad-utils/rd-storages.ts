@@ -7,22 +7,22 @@ export class RdLocalStorage extends RdStorage {
     this.key = Symbol("RdLocalStorage");
   }
   public get sizeStorage(): number {
-    return localStorage.length;
+    return window && localStorage.length;
   }
 
   public getItem({ key }: { key: string }): string {
-    return localStorage.getItem(key) ?? "";
+    return (window && localStorage.getItem(key)) ?? "";
   }
   public setItem({ key, value }: { key: string; value: string }): void {
-    return localStorage.setItem(key, value);
+    return window && localStorage.setItem(key, value);
   }
 
   public removeItem({ key }: { key: string }) {
-    return localStorage.removeItem(key);
+    return window && localStorage.removeItem(key);
   }
 
   public clearStorage() {
-    return localStorage.clear();
+    return window && localStorage.clear();
   }
 }
 
@@ -34,21 +34,21 @@ export class RdSessionStorage extends RdStorage {
     this.key = Symbol("RdSessionStorage");
   }
   public get sizeStorage(): number {
-    return sessionStorage.length;
+    return window && sessionStorage.length;
   }
 
   public getItem({ key }: { key: string }): string {
-    return sessionStorage.getItem(key) ?? "";
+    return (window && sessionStorage.getItem(key)) ?? "";
   }
   public setItem({ key, value }: { key: string; value: string }): void {
-    return sessionStorage.setItem(key, value);
+    return window && sessionStorage.setItem(key, value);
   }
 
   public removeItem({ key }: { key: string }) {
-    return sessionStorage.removeItem(key);
+    return window && sessionStorage.removeItem(key);
   }
 
   public clearStorage() {
-    return sessionStorage.clear();
+    return window && sessionStorage.clear();
   }
 }
