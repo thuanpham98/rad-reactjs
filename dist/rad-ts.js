@@ -2376,22 +2376,22 @@ function Fa(n, e, t) {
   return Ia(r, pa);
 }
 const Na = ({ children: n, queryClient: e }) => /* @__PURE__ */ J.jsx(wa, { client: e, children: n }), zn = hr({
-  height: window.innerHeight,
-  width: window.innerWidth
+  height: 0,
+  width: 0
 }), Aa = ({
   children: n
 }) => {
   const [e, t] = pr({
-    height: window.innerHeight,
-    width: window.innerWidth
+    height: 0,
+    width: 0
   }), r = Wi(
     () => t({
       height: window.innerHeight,
       width: window.innerWidth
     }),
-    [e]
+    []
   );
-  return Je(() => (r(), window.addEventListener("resize", r), document.addEventListener(
+  return Je(() => (r(), window && window.addEventListener("resize", r), window && window.addEventListener(
     "touchstart",
     (i) => {
       i.touches.length > 1 && i.preventDefault();
@@ -2400,7 +2400,7 @@ const Na = ({ children: n, queryClient: e }) => /* @__PURE__ */ J.jsx(wa, { clie
       passive: !1
     }
   ), () => {
-    window.removeEventListener("resize", r), window.removeEventListener("touchstart", () => {
+    window && window.removeEventListener("resize", r), window && window.removeEventListener("touchstart", () => {
       console.log("done touch start");
     });
   }), []), /* @__PURE__ */ J.jsx(zn.Provider, { value: e, children: n });
@@ -6420,14 +6420,16 @@ const $o = ({
       } : () => {
         t.state.showBottomSheet = !0, t.upDateState();
       }, 80);
-    }), window.addEventListener("popstate", () => {
+    }), window && window.addEventListener("popstate", () => {
       if (t.state.isLoading || s > 0) {
         Fo(!1);
         for (let o = 0; o < s; o++)
           No(null);
       }
     }), () => {
-      t.stream.complete();
+      t.stream.complete(), window && window.removeEventListener("popstate", () => {
+        console.log("done popstate");
+      });
     };
   }, []), /* @__PURE__ */ J.jsx(rs, { i18n: oo, children: /* @__PURE__ */ J.jsx(Aa, { children: /* @__PURE__ */ J.jsx(
     Na,
