@@ -6369,7 +6369,7 @@ const $o = ({
       t.state.isLoading = o, t.upDateState();
     }), lr.subscribe((o) => {
       t.state.showMessage = o, t.upDateState();
-    }), fr.subscribe((o) => {
+    }), window && document && fr.subscribe((o) => {
       if (o === null) {
         if (s > 0) {
           s--;
@@ -6420,7 +6420,7 @@ const $o = ({
       } : () => {
         t.state.showBottomSheet = !0, t.upDateState();
       }, 80);
-    }), window && window.addEventListener("popstate", () => {
+    }), window && document && window.addEventListener("popstate", () => {
       if (t.state.isLoading || s > 0) {
         Fo(!1);
         for (let o = 0; o < s; o++)
@@ -6440,14 +6440,14 @@ const $o = ({
         }
       }),
       children: /* @__PURE__ */ J.jsxs(wr.Provider, { value: e, children: [
-        r.showMessage && lt(cr.value, document.body, "rd-message"),
-        r.isLoading && lt(
+        r.showMessage && window && document && lt(cr.value, document.body, "rd-message"),
+        r.isLoading && window && document && lt(
           (a = e.configs) == null ? void 0 : a.loading,
           document.body,
           "rd-loader"
         ),
         r.modals.length > 0 && r.modals.map((s, o) => s),
-        r.showBottomSheet && lt(
+        r.showBottomSheet && window && document && lt(
           dr.value,
           document.body,
           "rd-bottom-sheet"
@@ -6458,9 +6458,9 @@ const $o = ({
   ) }) });
 }, zo = () => gr(wr);
 function Jo(n, e, t) {
-  const r = document.getElementById(`${e}`);
+  const r = window && document && document.getElementById(`${e}`);
   return t && r && (t.minHeight && (r.style.minHeight = t.minHeight), t.minWidth && (r.style.minWidth = t.minWidth), t.maxHeight && (r.style.maxHeight = t.maxHeight), t.maxWidth && (r.style.maxWidth = t.maxWidth)), ze.createRoot(
-    document.getElementById(`${e}`),
+    window && document && document.getElementById(`${e}`),
     {
       identifierPrefix: `${n}`,
       onRecoverableError(a) {

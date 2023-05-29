@@ -145,61 +145,63 @@ export const RdAppExtends: FC<{
       _blocRdApp.upDateState();
     });
 
-    rdQueueModal.subscribe((v) => {
-      if (v === null) {
-        if (countQueue > 0) {
-          countQueue--;
-          const currentModel = document.getElementById(
-            `rd-modals-${countQueue}`,
-          );
-          currentModel!.firstElementChild!.className =
-            "column animation-faded--out";
-          setTimeout(() => {
+    window &&
+      document &&
+      rdQueueModal.subscribe((v) => {
+        if (v === null) {
+          if (countQueue > 0) {
+            countQueue--;
+            const currentModel = document.getElementById(
+              `rd-modals-${countQueue}`,
+            );
+            currentModel!.firstElementChild!.className =
+              "column animation-faded--out";
+            setTimeout(() => {
+              _blocRdApp.state.modals = _blocRdApp.state.modals.slice(
+                0,
+                countQueue,
+              );
+              _blocRdApp.upDateState();
+            }, 150);
+          }
+        } else {
+          queueScheduler.schedule(() => {
             _blocRdApp.state.modals = _blocRdApp.state.modals.slice(
               0,
               countQueue,
             );
+            const idx = countQueue;
+            _blocRdApp.state.modals.push(
+              createPortal(
+                <RdOverlay
+                  id={`rd-modals-${idx}`}
+                  classChildren={"animation-scale--up animation-faded--in"}
+                  classBackground="rd-overlay-queue-modal"
+                  onTapBackGround={() => {
+                    if (appProps.configs?.closeModalOnTapOutside) {
+                      rdQueueModal.next(null);
+                    }
+                  }}
+                  onTapChildren={(e) => {
+                    e.stopPropagation();
+                  }}
+                >
+                  {v}
+                </RdOverlay>,
+                document.body,
+                `rd-modals-${idx}`,
+              ),
+            );
             _blocRdApp.upDateState();
-          }, 150);
+            countQueue++;
+          });
         }
-      } else {
-        queueScheduler.schedule(() => {
-          _blocRdApp.state.modals = _blocRdApp.state.modals.slice(
-            0,
-            countQueue,
-          );
-          const idx = countQueue;
-          _blocRdApp.state.modals.push(
-            createPortal(
-              <RdOverlay
-                id={`rd-modals-${idx}`}
-                classChildren={"animation-scale--up animation-faded--in"}
-                classBackground="rd-overlay-queue-modal"
-                onTapBackGround={() => {
-                  if (appProps.configs?.closeModalOnTapOutside) {
-                    rdQueueModal.next(null);
-                  }
-                }}
-                onTapChildren={(e) => {
-                  e.stopPropagation();
-                }}
-              >
-                {v}
-              </RdOverlay>,
-              document.body,
-              `rd-modals-${idx}`,
-            ),
-          );
-          _blocRdApp.upDateState();
-          countQueue++;
-        });
-      }
-      if (countQueue === 1) {
-        document.body.className = "bg-scrolling-element-when-modal-active";
-      } else if (countQueue === 0) {
-        document.body.className = "";
-      }
-    });
+        if (countQueue === 1) {
+          document.body.className = "bg-scrolling-element-when-modal-active";
+        } else if (countQueue === 0) {
+          document.body.className = "";
+        }
+      });
 
     rdBottomSheetCompo.subscribe((v) => {
       if (v === null) {
@@ -217,6 +219,7 @@ export const RdAppExtends: FC<{
 
     // turn of loading and component of old page
     window &&
+      document &&
       window.addEventListener("popstate", () => {
         if (_blocRdApp.state.isLoading || countQueue > 0) {
           rdLoading(false);
@@ -250,10 +253,14 @@ export const RdAppExtends: FC<{
           <RdAppContext.Provider value={appProps}>
             {/* handler UI message */}
             {_state.showMessage &&
+              window &&
+              document &&
               createPortal(rdMessageCompo.value, document.body, "rd-message")}
 
             {/* handler UI loading */}
             {_state.isLoading &&
+              window &&
+              document &&
               createPortal(
                 appProps.configs?.loading,
                 document.body,
@@ -268,6 +275,8 @@ export const RdAppExtends: FC<{
 
             {/* bottomsheet */}
             {_state.showBottomSheet &&
+              window &&
+              document &&
               createPortal(
                 rdBottomSheetCompo.value,
                 document.body,
@@ -295,7 +304,8 @@ export function buildRdRootElement(
     maxWidth?: string;
   },
 ): ReactDOM.Root {
-  const rootEle = document.getElementById(`${mainId}`) as HTMLElement;
+  const rootEle =
+    window && document && (document.getElementById(`${mainId}`) as HTMLElement);
   if (constrant && rootEle) {
     if (constrant.minHeight) {
       rootEle.style.minHeight = constrant.minHeight;
@@ -311,7 +321,7 @@ export function buildRdRootElement(
     }
   }
   const rdRoot = ReactDOM.createRoot(
-    document.getElementById(`${mainId}`) as HTMLElement,
+    window && document && (document.getElementById(`${mainId}`) as HTMLElement),
     {
       identifierPrefix: `${prefixComponent}`,
       onRecoverableError(error: any) {
