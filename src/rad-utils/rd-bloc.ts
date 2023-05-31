@@ -37,6 +37,10 @@ export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
   const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
   const [_state, _setState] = useState<T>(_bloc.state);
 
+  function updateState(s?: T) {
+    _bloc.upDateState(s);
+  }
+
   useEffect(() => {
     _bloc.stream.subscribe((v) => {
       _setState({ ...v });
@@ -47,5 +51,5 @@ export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
     };
   }, [_bloc.stream]);
 
-  return [_bloc.state, _bloc.upDateState];
+  return [_bloc.state, updateState];
 }

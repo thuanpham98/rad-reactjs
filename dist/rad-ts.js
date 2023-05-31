@@ -5657,11 +5657,14 @@ class gi {
 }
 function Ho(n) {
   const e = Ye(new gi({ initState: n })).current, [t, r] = kt(e.state);
-  return Ae(() => (e.stream.subscribe((i) => {
-    r({ ...i });
+  function i(a) {
+    e.upDateState(a);
+  }
+  return Ae(() => (e.stream.subscribe((a) => {
+    r({ ...a });
   }), () => {
     e.stream.complete();
-  }), [e.stream]), [e.state, e.upDateState];
+  }), [e.stream]), [e.state, i];
 }
 var sr = function(n, e) {
   return sr = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(t, r) {
