@@ -28,7 +28,7 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
   const handleResize = useCallback(
     () =>
       setDimension({
-        height: window  && window.innerHeight,
+        height: window && window.innerHeight,
         width: window && window.innerWidth,
       }),
     [],

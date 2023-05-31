@@ -1,4 +1,4 @@
-export { RdBloc } from "./rd-bloc";
+export { RdBloc, useRdBloc } from "./rd-bloc";
 export type { RdConfig } from "./rd-config";
 export { rdI18n, useRdTranslate } from "./rd-i18n";
 export { RdModelsManager } from "./rd-model-manager";

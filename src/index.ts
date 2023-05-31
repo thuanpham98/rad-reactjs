@@ -42,6 +42,7 @@ export {
   useRdTranslate,
   RdLogger,
   RdLoggerDecorator,
+  useRdBloc,
 } from "./rad-utils";
 export { ErrorModel } from "./rad-models/ErrorModel";
 export {
