@@ -13,7 +13,7 @@ export class RdBloc<T> {
     callback?: () => void | Promise<void>;
   }) {
     this._state = initState;
-    this.stream = new RdStream<T>(this._state);
+    this.stream = new RdStream<T>(initState);
     callback && callback();
   }
 
@@ -26,19 +26,15 @@ export class RdBloc<T> {
   }
 
   public upDateState(s?: T) {
-    if (s !== undefined) {
-      this._state = s;
+    if (s) {
+      this._state=s;
     }
     this.stream.next(this._state);
   }
 }
 
 export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
-  // const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
-  const _bloc=useMemo(()=>{
-    return new RdBloc<T>({initState:data});
-  },[]);
-  
+  const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
   const [_state, _setState] = useState<T>(_bloc.state);
 
   useEffect(() => {
