@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { RdStream } from "./rd-stream";
 
 export class RdBloc<T> {
@@ -34,8 +34,12 @@ export class RdBloc<T> {
 }
 
 export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
-  const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
-  const [_state, _setState] = useState(_bloc.state);
+  // const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
+  const _bloc=useMemo(()=>{
+    return new RdBloc<T>({initState:data});
+  },[]);
+  
+  const [_state, _setState] = useState<T>(_bloc.state);
 
   useEffect(() => {
     _bloc.stream.subscribe((v) => {
