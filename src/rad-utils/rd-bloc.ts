@@ -33,7 +33,7 @@ export class RdBloc<T> {
   }
 }
 
-export function useRdBloc<T>(data: T): [T, (v: T) => void] {
+export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
   const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
   const [_state, _setState] = useState(_bloc.state);
 
