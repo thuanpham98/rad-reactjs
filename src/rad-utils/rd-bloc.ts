@@ -26,10 +26,10 @@ export class RdBloc<T> {
   }
 
   public upDateState(s?: T) {
-    if (s) {
-      this._state=s;
+    if (s !== undefined) {
+      this._state = s;
     }
-    this.stream.next(this._state);
+    this._state && this.stream.next(this._state);
   }
 }
 
@@ -45,7 +45,7 @@ export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
     return () => {
       _bloc.stream.complete();
     };
-  }, []);
+  }, [_bloc.stream]);
 
   return [_bloc.state, _bloc.upDateState];
 }

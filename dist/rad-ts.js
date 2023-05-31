@@ -5652,7 +5652,7 @@ class gi {
     return this._state;
   }
   upDateState(e) {
-    e && (this._state = e), this.stream.next(this._state);
+    e !== void 0 && (this._state = e), this._state && this.stream.next(this._state);
   }
 }
 function Ho(n) {
@@ -5661,7 +5661,7 @@ function Ho(n) {
     r({ ...i });
   }), () => {
     e.stream.complete();
-  }), []), [e.state, e.upDateState];
+  }), [e.stream]), [e.state, e.upDateState];
 }
 var sr = function(n, e) {
   return sr = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(t, r) {
