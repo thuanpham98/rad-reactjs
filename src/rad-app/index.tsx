@@ -138,6 +138,11 @@ export const RdAppExtends: FC<{
     rdIsLoading.subscribe((v) => {
       _blocRdApp.state.isLoading = v;
       _blocRdApp.upDateState();
+      if (v) {
+        document.body.className = "bg-scrolling-element-when-modal-active";
+      } else {
+        document.body.className = "";
+      }
     });
 
     rdShowMessage.subscribe((v) => {
@@ -205,11 +210,13 @@ export const RdAppExtends: FC<{
 
     rdBottomSheetCompo.subscribe((v) => {
       if (v === null) {
+        document.body.className = "";
         setTimeout(() => {
           _blocRdApp.state.showBottomSheet = false;
           _blocRdApp.upDateState();
         }, 80);
       } else {
+        document.body.className = "bg-scrolling-element-when-modal-active";
         setTimeout(() => {
           _blocRdApp.state.showBottomSheet = true;
           _blocRdApp.upDateState();
