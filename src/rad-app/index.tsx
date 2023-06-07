@@ -53,6 +53,7 @@ interface RdAppExtendsState {
   showModel: boolean;
   showMessage: boolean;
   showBottomSheet: boolean;
+  showDrawer: boolean;
   modals: ReactPortal[];
 }
 
@@ -65,6 +66,10 @@ export const rdMessageCompo: BehaviorSubject<JSX.Element | null> =
 export const rdQueueModal: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
 export const rdBottomSheetCompo: BehaviorSubject<JSX.Element | null> =
+  new BehaviorSubject<JSX.Element | null>(null);
+export const rdShowDrawer: BehaviorSubject<boolean> =
+  new BehaviorSubject<boolean>(false);
+export const rdDrawerCompo: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
 
 export const rdError: BehaviorSubject<ErrorModel | unknown> =
@@ -85,6 +90,16 @@ export function rdMessage(m: JSX.Element | null) {
   } else {
     rdMessageCompo.next(m);
     rdShowMessage.next(true);
+  }
+}
+
+export function rdDrawer(m: JSX.Element | null) {
+  if (m === null) {
+    rdDrawerCompo.next(null);
+    rdShowDrawer.next(false);
+  } else {
+    rdDrawerCompo.next(m);
+    rdShowDrawer.next(true);
   }
 }
 
@@ -110,6 +125,7 @@ export const RdAppExtends: FC<{
         showMessage: false,
         showModel: false,
         showBottomSheet: false,
+        showDrawer: false,
       },
     });
   }, []);
@@ -123,6 +139,16 @@ export const RdAppExtends: FC<{
 
     rdIsLoading.subscribe((v) => {
       _blocRdApp.state.isLoading = v;
+      _blocRdApp.upDateState();
+      if (v) {
+        document.body.className = "bg-scrolling-element-when-modal-active";
+      } else {
+        document.body.className = "";
+      }
+    });
+
+    rdShowDrawer.subscribe((v) => {
+      _blocRdApp.state.showDrawer = v;
       _blocRdApp.upDateState();
       if (v) {
         document.body.className = "bg-scrolling-element-when-modal-active";
@@ -244,6 +270,12 @@ export const RdAppExtends: FC<{
           }
         >
           <RdAppContext.Provider value={appProps}>
+            {/* handler UI drawer */}
+            {_state.showDrawer &&
+              window &&
+              document &&
+              createPortal(rdDrawerCompo.value, document.body, "rd-drawer")}
+
             {/* handler UI message */}
             {_state.showMessage &&
               window &&
