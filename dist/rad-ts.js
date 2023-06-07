@@ -284,14 +284,14 @@ function Xi() {
       } catch (he) {
         if (he && T && typeof he.stack == "string") {
           for (var D = he.stack.split(`
-`), Y = T.stack.split(`
-`), H = D.length - 1, V = Y.length - 1; H >= 1 && V >= 0 && D[H] !== Y[V]; )
+`), J = T.stack.split(`
+`), H = D.length - 1, V = J.length - 1; H >= 1 && V >= 0 && D[H] !== J[V]; )
             V--;
           for (; H >= 1 && V >= 0; H--, V--)
-            if (D[H] !== Y[V]) {
+            if (D[H] !== J[V]) {
               if (H !== 1 || V !== 1)
                 do
-                  if (H--, V--, V < 0 || D[H] !== Y[V]) {
+                  if (H--, V--, V < 0 || D[H] !== J[V]) {
                     var ee = `
 ` + D[H].replace(" at new ", " at ");
                     return c.displayName && ee.includes("<anonymous>") && (ee = ee.replace("<anonymous>", c.displayName)), typeof c == "function" && we.set(c, ee), ee;
@@ -358,8 +358,8 @@ function Xi() {
             var D = void 0;
             try {
               if (typeof c[N] != "function") {
-                var Y = Error((T || "React class") + ": " + x + " type `" + N + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof c[N] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
-                throw Y.name = "Invariant Violation", Y;
+                var J = Error((T || "React class") + ": " + x + " type `" + N + "` is invalid; it must be a function, usually from the `prop-types` package, but received `" + typeof c[N] + "`.This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.");
+                throw J.name = "Invariant Violation", J;
               }
               D = c[N](w, N, T, x, null, "SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED");
             } catch (H) {
@@ -475,8 +475,8 @@ function Xi() {
     };
     function Fi(c, w, x, T, A) {
       {
-        var U, N = {}, D = null, Y = null;
-        x !== void 0 && (Er(x), D = "" + x), Li(w) && (Er(w.key), D = "" + w.key), ji(w) && (Y = w.ref, Ti(w, A));
+        var U, N = {}, D = null, J = null;
+        x !== void 0 && (Er(x), D = "" + x), Li(w) && (Er(w.key), D = "" + w.key), ji(w) && (J = w.ref, Ti(w, A));
         for (U in w)
           ut.call(w, U) && !ki.hasOwnProperty(U) && (N[U] = w[U]);
         if (c && c.defaultProps) {
@@ -484,11 +484,11 @@ function Xi() {
           for (U in H)
             N[U] === void 0 && (N[U] = H[U]);
         }
-        if (D || Y) {
+        if (D || J) {
           var V = typeof c == "function" ? c.displayName || c.name || "Unknown" : c;
-          D && Di(N, V), Y && Ii(N, V);
+          D && Di(N, V), J && Ii(N, V);
         }
-        return Ni(c, D, Y, A, T, Be.current, N);
+        return Ni(c, D, J, A, T, Be.current, N);
       }
     }
     var Ft = y.ReactCurrentOwner, Cr = y.ReactDebugCurrentFrame;
@@ -615,8 +615,8 @@ Check the top-level render call using <` + x + ">.");
         if (!N) {
           var D = "";
           (c === void 0 || typeof c == "object" && c !== null && Object.keys(c).length === 0) && (D += " You likely forgot to export your component from the file it's defined in, or you might have mixed up default and named imports.");
-          var Y = Ai(A);
-          Y ? D += Y : D += _r();
+          var J = Ai(A);
+          J ? D += J : D += _r();
           var H;
           c === null ? H = "null" : It(c) ? H = "array" : c !== void 0 && c.$$typeof === e ? (H = "<" + (W(c.type) || "Unknown") + " />", D = " Did you accidentally export a JSX literal instead of a component?") : H = typeof c, m("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", H, D);
         }
@@ -650,7 +650,7 @@ Check the top-level render call using <` + x + ">.");
   }()), He;
 }
 process.env.NODE_ENV === "production" ? $t.exports = Zi() : $t.exports = Xi();
-var J = $t.exports;
+var Y = $t.exports;
 class et {
   constructor() {
     this.listeners = /* @__PURE__ */ new Set(), this.subscribe = this.subscribe.bind(this);
@@ -2375,7 +2375,7 @@ function Fa(n, e, t) {
   const r = ze(n, e, t);
   return Na(r, ga);
 }
-const Aa = ({ children: n, queryClient: e }) => /* @__PURE__ */ J.jsx(Oa, { client: e, children: n }), zn = pr({
+const Aa = ({ children: n, queryClient: e }) => /* @__PURE__ */ Y.jsx(Oa, { client: e, children: n }), zn = pr({
   height: 0,
   width: 0
 }), Ua = ({
@@ -2403,7 +2403,7 @@ const Aa = ({ children: n, queryClient: e }) => /* @__PURE__ */ J.jsx(Oa, { clie
     window && window.removeEventListener("resize", r), window && window.removeEventListener("touchstart", () => {
       console.log("done touch start");
     });
-  }), []), /* @__PURE__ */ J.jsx(zn.Provider, { value: e, children: n });
+  }), []), /* @__PURE__ */ Y.jsx(zn.Provider, { value: e, children: n });
 };
 function X(n) {
   "@babel/helpers - typeof";
@@ -6307,7 +6307,7 @@ const Io = ({
   classChildren: r,
   classBackground: i,
   id: a
-}) => /* @__PURE__ */ J.jsx("div", { id: a, className: i, onClick: e, children: /* @__PURE__ */ J.jsx(
+}) => /* @__PURE__ */ Y.jsx("div", { id: a, className: i, onClick: e, children: /* @__PURE__ */ Y.jsx(
   "div",
   {
     className: `${r ?? ""}`,
@@ -6329,7 +6329,7 @@ const wr = pr(
 ), Vo = ({
   children: n,
   appProps: e
-}) => /* @__PURE__ */ J.jsx(wr.Provider, { value: e, children: n }), Ri = new qe(!1), cr = new qe(!1), fr = new qe(null), dr = new qe(null), hr = new qe(null), Ko = new qe(null);
+}) => /* @__PURE__ */ Y.jsx(wr.Provider, { value: e, children: n }), Ri = new qe(!1), cr = new qe(!1), fr = new qe(null), dr = new qe(null), hr = new qe(null), Ko = new qe(null);
 function No(n) {
   Ri.next(n);
 }
@@ -6337,23 +6337,7 @@ function Fo(n) {
   dr.next(n);
 }
 function Wo(n) {
-  n === null ? (fr.next(null), cr.next(!1)) : (fr.next(
-    /* @__PURE__ */ J.jsx(
-      "div",
-      {
-        style: {
-          width: "fit-content",
-          height: "fit-content",
-          position: "absolute",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          top: "16px"
-        },
-        children: n
-      }
-    )
-  ), cr.next(!0));
+  n === null ? (fr.next(null), cr.next(!1)) : (fr.next(n), cr.next(!0));
 }
 function $o(n) {
   hr.next(n);
@@ -6403,7 +6387,7 @@ const zo = ({
           const u = s;
           t.state.modals.push(
             ct(
-              /* @__PURE__ */ J.jsx(
+              /* @__PURE__ */ Y.jsx(
                 Io,
                 {
                   id: `rd-modals-${u}`,
@@ -6442,7 +6426,7 @@ const zo = ({
         console.log("done popstate");
       });
     };
-  }, []), /* @__PURE__ */ J.jsx(ns, { i18n: uo, children: /* @__PURE__ */ J.jsx(Ua, { children: /* @__PURE__ */ J.jsx(
+  }, []), /* @__PURE__ */ Y.jsx(ns, { i18n: uo, children: /* @__PURE__ */ Y.jsx(Ua, { children: /* @__PURE__ */ Y.jsx(
     Aa,
     {
       queryClient: new pa({
@@ -6450,7 +6434,7 @@ const zo = ({
           queries: { refetchOnWindowFocus: !1, retry: !1 }
         }
       }),
-      children: /* @__PURE__ */ J.jsxs(wr.Provider, { value: e, children: [
+      children: /* @__PURE__ */ Y.jsxs(wr.Provider, { value: e, children: [
         r.showMessage && window && document && ct(fr.value, document.body, "rd-message"),
         r.isLoading && window && document && ct(
           (a = e.configs) == null ? void 0 : a.loading,
@@ -6673,9 +6657,9 @@ const nu = ({
   classText: r
 }) => {
   if (!e.trim())
-    return /* @__PURE__ */ J.jsx("span", { className: r, children: n });
+    return /* @__PURE__ */ Y.jsx("span", { className: r, children: n });
   const i = n.split("");
-  return /* @__PURE__ */ J.jsx("span", { className: r, children: i.filter((a) => a).map((a, s) => e.replaceAll(" ", "").includes(a.toLowerCase()) && a !== "" ? /* @__PURE__ */ J.jsx("mark", { className: t, children: a }, s) : /* @__PURE__ */ J.jsx("span", { children: a }, s)) });
+  return /* @__PURE__ */ Y.jsx("span", { className: r, children: i.filter((a) => a).map((a, s) => e.replaceAll(" ", "").includes(a.toLowerCase()) && a !== "" ? /* @__PURE__ */ Y.jsx("mark", { className: t, children: a }, s) : /* @__PURE__ */ Y.jsx("span", { children: a }, s)) });
 }, Ao = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgdmlld0JveD0iMCAwIDM2MCAzNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPgo8cmVjdCB3aWR0aD0iMzYwIiBoZWlnaHQ9IjM2MCIgZmlsbD0idXJsKCNwYXR0ZXJuMCkiLz4KPGRlZnM+CjxwYXR0ZXJuIGlkPSJwYXR0ZXJuMCIgcGF0dGVybkNvbnRlbnRVbml0cz0ib2JqZWN0Qm91bmRpbmdCb3giIHdpZHRoPSIxIiBoZWlnaHQ9IjEiPgo8dXNlIHhsaW5rOmhyZWY9IiNpbWFnZTBfNDM2XzIwMjc2NSIgdHJhbnNmb3JtPSJzY2FsZSgwLjAxNTYyNSkiLz4KPC9wYXR0ZXJuPgo8aW1hZ2UgaWQ9ImltYWdlMF80MzZfMjAyNzY1IiB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBRUFBQUFCQUNBWUFBQUNxYVhIZUFBQUE0MGxFUVZSNFh1M2JRUTZFUUFoRVViai9vWHNPOFNkaDRYT3ZKQWkvcWtGM1p0NkU2NzEwKyt4dWlENlQ0MHVBQ3RBQ3FZbHpEMklBQ0ZLQmtvSGNnbVNRREpKQk1uZ0tJVDZBRHlnRjZEU1lmY0NMVHpnL3owZUdyQVNvZ0RiVDBnS3hCMk1CNXBraUJvQmdyRUVNd0lCakx4OWZBQWlDSUFoeWdta2tSZ1lqaFdNSGRpdHNMMkF2WUMrUUlIamR3emsrQm1BQUJtQkFXYzFrQ0YwYktSQUVRUkFFUVJBTUdhQUNiYUNVei9QNUJSaUt4aFFhaVYwN3VSamZZZ1FETUtEcEdBaEdDTVVDekQ0Q0JFRXcxaUFHWUlCUFpNSmgrZzgvUDhjS3BBSmZWNEVmTWVlL3NMdGFFRklBQUFBQVNVVk9SSzVDWUlJPSIvPgo8L2RlZnM+Cjwvc3ZnPgo=", iu = ({
   src: n,
   srcError: e = Ao,
@@ -6684,7 +6668,7 @@ const nu = ({
   style: i
 }) => {
   const a = Ye(null);
-  return /* @__PURE__ */ J.jsx(
+  return /* @__PURE__ */ Y.jsx(
     "img",
     {
       style: i,

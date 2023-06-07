@@ -83,21 +83,7 @@ export function rdMessage(m: JSX.Element | null) {
     rdMessageCompo.next(null);
     rdShowMessage.next(false);
   } else {
-    rdMessageCompo.next(
-      <div
-        style={{
-          width: "fit-content",
-          height: "fit-content",
-          position: "absolute",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-          top: "16px",
-        }}
-      >
-        {m}
-      </div>,
-    );
+    rdMessageCompo.next(m);
     rdShowMessage.next(true);
   }
 }
