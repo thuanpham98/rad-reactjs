@@ -6,6 +6,9 @@
     "dist",
     "dist/*.css"
   ],
+  "publishConfig": {
+    "@unicloud:registry": "https://git.sunshinetech.vn/api/v4/projects/1621/packages/npm/"
+  },
   "main": "./dist/rad-ts.cjs",
   "module": "./dist/rad-ts.js",
   "types": "./dist/index.d.ts",
