@@ -1,0 +1,16 @@
+stages:
+  - deploy
+
+deploy:
+  stage: deploy
+  allow_failure: false
+  image: docker.io/node:18.16-alpine3.17
+  cache:
+    key: "${CI_JOB_NAME}"
+    paths:
+      - node_modules
+  script:
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
+    - yarn run build && yarn npm publish
+  only:
+    - tags
