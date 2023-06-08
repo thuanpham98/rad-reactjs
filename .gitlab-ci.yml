@@ -10,12 +10,12 @@ deploy:
     paths:
       - node_modules
   script:
-    - echo "@unicloud:registry=https://git.sunshinetech.vn/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
-    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken ${CI_JOB_TOKEN}" >> .npmrc
-    - cat .npmrc
+    - echo "@unicloud:registry=https://${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/" >> .npmrc
+    - echo "//${CI_SERVER_HOST}/api/v4/packages/npm/:_authToken=${CI_JOB_TOKEN}"
+    - echo "//${CI_SERVER_HOST}/api/v4/projects/${CI_PROJECT_ID}/packages/npm/:_authToken=${CI_JOB_TOKEN}" >> .npmrc
     - yarn install
     - yarn run build && yarn publish --non-interactive
   only:
-    - develop
+    - tags
   tags:
     - shared-docker-runner
