@@ -16,6 +16,6 @@ deploy:
     - yarn install
     - yarn run build && yarn publish --non-interactive
   only:
-    - tags
+    - develop
   tags:
     - shared-docker-runner
