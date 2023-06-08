@@ -15,6 +15,6 @@ deploy:
     - yarn install
     - yarn run build && npm publish
   only:
-    - develop
+    - tags
   tags:
     - shared-docker-runner
