@@ -2355,8 +2355,11 @@ function Na(n, e) {
   }), r = Ra(), i = Pa(), a = t.defaultQueryOptions(n);
   a._optimisticResults = r ? "isRestoring" : "optimistic", a.onError && (a.onError = K.batchCalls(a.onError)), a.onSuccess && (a.onSuccess = K.batchCalls(a.onSuccess)), a.onSettled && (a.onSettled = K.batchCalls(a.onSettled)), La(a), _a(a, i), ka(i);
   const [s] = G.useState(() => new e(t, a)), o = s.getOptimisticResult(a);
-  if (wa(G.useCallback((u) => r ? () => {
-  } : s.subscribe(K.batchCalls(u)), [s, r]), () => s.getCurrentResult(), () => s.getCurrentResult()), G.useEffect(() => {
+  if (wa(G.useCallback((u) => {
+    const d = r ? () => {
+    } : s.subscribe(K.batchCalls(u));
+    return s.updateResult(), d;
+  }, [s, r]), () => s.getCurrentResult(), () => s.getCurrentResult()), G.useEffect(() => {
     s.setOptions(a, {
       listeners: !1
     });
@@ -3130,9 +3133,7 @@ var ys = function(n) {
     value: function(i, a, s, o) {
       var u = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : {
         silent: !1
-      }, d = this.options.keySeparator;
-      d === void 0 && (d = ".");
-      var f = [i, a];
+      }, d = u.keySeparator !== void 0 ? u.keySeparator : this.options.keySeparator, f = [i, a];
       s && (f = f.concat(d ? s.split(d) : s)), i.indexOf(".") > -1 && (f = i.split("."), o = a, a = f[1]), this.addNamespaces(a), on(this.data, f, o), u.silent || this.emit("added", i, a, s, o);
     }
   }, {
@@ -4933,7 +4934,9 @@ var ai = /* @__PURE__ */ function() {
     key: "init",
     value: function(t) {
       var r = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, i = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {};
-      this.services = t, this.options = As(r, this.options || {}, $s()), this.options.lookupFromUrlIndex && (this.options.lookupFromPathIndex = this.options.lookupFromUrlIndex), this.i18nOptions = i, this.addDetector(Ms), this.addDetector(qs), this.addDetector(Bs), this.addDetector(Qs), this.addDetector(Hs), this.addDetector(Vs), this.addDetector(Ks), this.addDetector(Ws);
+      this.services = t || {
+        languageUtils: {}
+      }, this.options = As(r, this.options || {}, $s()), this.options.lookupFromUrlIndex && (this.options.lookupFromPathIndex = this.options.lookupFromUrlIndex), this.i18nOptions = i, this.addDetector(Ms), this.addDetector(qs), this.addDetector(Bs), this.addDetector(Qs), this.addDetector(Hs), this.addDetector(Vs), this.addDetector(Ks), this.addDetector(Ws);
     }
   }, {
     key: "addDetector",

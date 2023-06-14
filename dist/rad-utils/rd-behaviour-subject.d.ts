@@ -4,7 +4,7 @@ export declare class RdBehaviourObserver<T> extends RdObserver<T> {
     handler?: (v: T) => void;
     constructor(h?: (v: T) => void);
     getName(): string;
-    update(s: RdSubject<T>): void;
+    update(s: RdBehaviorSubject<T>): void;
 }
 export declare class RdBehaviorSubject<T> extends RdSubject<T> {
     key: symbol;
