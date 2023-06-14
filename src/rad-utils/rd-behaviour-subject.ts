@@ -12,8 +12,8 @@ export class RdBehaviourObserver<T> extends RdObserver<T> {
     return this.key.description ?? "";
   }
 
-  update(s: RdSubject<T>): void {
-    if (s instanceof RdBehaviorSubject<T>) {
+  update(s: RdBehaviorSubject<T>): void {
+    if (s instanceof RdBehaviorSubject) {
       this.handler && this.handler(s.value);
     }
   }
