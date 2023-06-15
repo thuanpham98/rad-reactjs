@@ -1,0 +1,135 @@
+.rd-overlay__child {
+  max-height: 100vh;
+  height: fit-content;
+  width: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+  ms-overflow-y: auto;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    transform: scale(0.3);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleDown {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(0.3);
+  }
+}
+
+.animation-faded--in {
+  animation: fadeIn linear 0.2s;
+}
+.animation-faded--out {
+  animation: fadeOut linear 0.2s;
+}
+
+.animation-scale--up {
+  animation: scaleUp linear 0.2s;
+}
+
+.animation-scale--down {
+  animation: scaleDown linear 0.2s;
+}
+:root {
+  --layer-loading: 18;
+  --layer-message: 16;
+  --layer-model-content: 14;
+  --layer-model: 12;
+  --layer-sidebar: 10;
+  --layer-overlay: 8;
+  --layer-dropdown-menu: 6;
+
+  --breakpoint-tablet: 600px;
+  --breakpoint-laptop: 1024px;
+}
+
+.bg-scrolling-element-when-modal-active {
+  /* when modal active */
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+  overflow: hidden;
+  /* Other browsers */
+  overscroll-behavior: none;
+}
+.rd-overlay-1 {
+  overflow: unset;
+  position: fixed;
+  z-index: var(--layer-overlay);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(31, 41, 55, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  overflow-y: hidden;
+}
+
+.rd-overlay-queue-modal {
+  overflow: unset;
+  position: fixed;
+  z-index: var(--layer-model);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(31, 41, 55, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  overflow-y: hidden;
+  backdrop-filter: blur(5px);
+}
+
+.rd-overlay-loading {
+  overflow: unset;
+  position: fixed;
+  z-index: var(--layer-loading);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  max-height: 100%;
+  background-color: rgba(31, 41, 55, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  overflow-y: hidden;
+}

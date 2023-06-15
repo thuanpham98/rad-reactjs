@@ -1,7 +1,11 @@
 {
   "name": "@rad/rad-ts",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
+  "private":"false",
+  "license": "MIT",
+  "maintainers": ["pmttmp24@gmail.com","tranrd@unicloud.com.vn"],
+  "homepage": "https://git.sunshinetech.vn/research-team/common/front-end/radts",
   "files": [
     "dist",
     "dist/*.css"
