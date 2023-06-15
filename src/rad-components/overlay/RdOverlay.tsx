@@ -18,17 +18,8 @@ export const RdOverlay = ({
   return (
     <div id={id} className={classBackground} onClick={onTapBackGround}>
       <div
-        className={`${classChildren ?? ""}`}
+        className={`rd-overlay__child ${classChildren ?? ""}`}
         onClick={onTapChildren}
-        style={{
-          maxHeight: "100vh",
-          height: "fit-content",
-          width: "fit-content",
-          justifyContent: "flex-start",
-          alignItems: "center",
-          overflowY: "auto",
-          msOverflowY: "auto",
-        }}
       >
         {children}
       </div>

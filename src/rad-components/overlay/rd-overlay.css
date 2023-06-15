@@ -1,8 +1,9 @@
-.rd-overlay-child {
-  z-index: var(--layer-model-content);
+.rd-overlay__child {
   max-height: 100vh;
   height: fit-content;
   width: fit-content;
   justify-content: flex-start;
   align-items: center;
+  overflow-y: auto;
+  ms-overflow-y: auto;
 }
