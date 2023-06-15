@@ -6310,17 +6310,8 @@ const Io = ({
 }) => /* @__PURE__ */ Y.jsx("div", { id: a, className: i, onClick: e, children: /* @__PURE__ */ Y.jsx(
   "div",
   {
-    className: `${r ?? ""}`,
+    className: `rd-overlay__child ${r ?? ""}`,
     onClick: t,
-    style: {
-      maxHeight: "100vh",
-      height: "fit-content",
-      width: "fit-content",
-      justifyContent: "flex-start",
-      alignItems: "center",
-      overflowY: "auto",
-      msOverflowY: "auto"
-    },
     children: n
   }
 ) });
@@ -6383,6 +6374,7 @@ const Yo = ({
         }
       } else
         Do.schedule(() => {
+          var d, f;
           t.state.modals = t.state.modals.slice(
             0,
             s
@@ -6394,14 +6386,14 @@ const Yo = ({
                 Io,
                 {
                   id: `rd-modals-${u}`,
-                  classChildren: "animation-scale--up animation-faded--in",
-                  classBackground: "rd-overlay-queue-modal",
+                  classChildren: `animation-scale--up animation-faded--in ${((d = e.configs) == null ? void 0 : d.classChildModel) ?? ""}`,
+                  classBackground: `rd-overlay-queue-modal ${((f = e.configs) == null ? void 0 : f.classBackgroundModel) ?? ""}`,
                   onTapBackGround: () => {
-                    var d;
-                    (d = e.configs) != null && d.closeModalOnTapOutside && dr.next(null);
+                    var l;
+                    (l = e.configs) != null && l.closeModalOnTapOutside && dr.next(null);
                   },
-                  onTapChildren: (d) => {
-                    d.stopPropagation();
+                  onTapChildren: (l) => {
+                    l.stopPropagation();
                   },
                   children: o
                 }

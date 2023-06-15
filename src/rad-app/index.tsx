@@ -192,8 +192,12 @@ export const RdAppExtends: FC<{
               createPortal(
                 <RdOverlay
                   id={`rd-modals-${idx}`}
-                  classChildren={"animation-scale--up animation-faded--in"}
-                  classBackground="rd-overlay-queue-modal"
+                  classChildren={`animation-scale--up animation-faded--in ${
+                    appProps.configs?.classChildModel ?? ""
+                  }`}
+                  classBackground={`rd-overlay-queue-modal ${
+                    appProps.configs?.classBackgroundModel ?? ""
+                  }`}
                   onTapBackGround={() => {
                     if (appProps.configs?.closeModalOnTapOutside) {
                       rdQueueModal.next(null);
@@ -356,40 +360,3 @@ export function buildRdRootElement(
   );
   return rdRoot;
 }
-
-// export function buildRdHydrateRootElement(
-//   prefixComponent: string,
-//   mainId: string,
-//   constrant?: {
-//     minHeight?: string;
-//     minWidth?: string;
-//     maxHeight?: string;
-//     maxWidth?: string;
-//   },
-// ): ReactDOM.Root {
-//   const rootEle = document.getElementById(`${mainId}`) as HTMLElement;
-//   if (constrant && rootEle) {
-//     if (constrant.minHeight) {
-//       rootEle.style.minHeight = constrant.minHeight;
-//     }
-//     if (constrant.minWidth) {
-//       rootEle.style.minWidth = constrant.minWidth;
-//     }
-//     if (constrant.maxHeight) {
-//       rootEle.style.maxHeight = constrant.maxHeight;
-//     }
-//     if (constrant.maxWidth) {
-//       rootEle.style.maxWidth = constrant.maxWidth;
-//     }
-//   }
-//   const rdRoot = ReactDOM.hydrateRoot(
-//     document.getElementById(`${mainId}`) as HTMLElement,
-//     {
-//       identifierPrefix: `${prefixComponent}`,
-//       onRecoverableError(error: any) {
-//         console.error(error);
-//       },
-//     },
-//   );
-//   return rdRoot;
-// }
