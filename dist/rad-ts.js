@@ -5539,10 +5539,7 @@ var oo = function() {
 }();
 fi.type = "backend";
 $.use(fi).use(ai).use(Ga);
-const uo = $;
-function Ho() {
-  return rs();
-}
+const uo = $, Ho = rs;
 var Ye = {}, ze = Ji;
 if (process.env.NODE_ENV === "production")
   Ye.createRoot = ze.createRoot, Ye.hydrateRoot = ze.hydrateRoot;

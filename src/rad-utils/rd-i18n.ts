@@ -11,6 +11,4 @@ i18n
   // pass the i18n instance to react-i18next.
   .use(initReactI18next);
 export const rdI18n = i18n;
-export function useRdTranslate() {
-  return useTranslation();
-}
+export const useRdTranslate = useTranslation;
