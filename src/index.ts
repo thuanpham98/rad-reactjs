@@ -13,6 +13,9 @@ export {
   rdMessageCompo,
   rdQueueModal,
   rdShowMessage,
+  rdDrawer,
+  rdDrawerCompo,
+  rdShowDrawer,
 } from "./rad-app";
 
 export {
