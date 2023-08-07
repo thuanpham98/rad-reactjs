@@ -16,7 +16,10 @@ export declare const RdApp: FC<{
 }>;
 export declare const rdIsLoading: BehaviorSubject<boolean>;
 export declare const rdShowMessage: BehaviorSubject<boolean>;
-export declare const rdMessageCompo: BehaviorSubject<JSX.Element | null>;
+export declare const rdMessageCompo: BehaviorSubject<{
+    element: JSX.Element | null;
+    duration?: number;
+}>;
 export declare const rdQueueModal: BehaviorSubject<JSX.Element | null>;
 export declare const rdBottomSheetCompo: BehaviorSubject<JSX.Element | null>;
 export declare const rdShowDrawer: BehaviorSubject<boolean>;
@@ -24,7 +27,7 @@ export declare const rdDrawerCompo: BehaviorSubject<JSX.Element | null>;
 export declare const rdError: BehaviorSubject<ErrorModel | unknown>;
 export declare function rdLoading(open: boolean): void;
 export declare function rdModal(m: JSX.Element | null): void;
-export declare function rdMessage(m: JSX.Element | null): void;
+export declare function rdMessage(m: JSX.Element | null, d?: number): void;
 export declare function rdDrawer(m: JSX.Element | null): void;
 export declare function rdBottomSheet(m: JSX.Element | null): void;
 export declare const RdAppExtends: FC<{

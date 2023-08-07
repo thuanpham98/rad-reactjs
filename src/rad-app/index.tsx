@@ -63,8 +63,13 @@ export const rdIsLoading: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(false);
 export const rdShowMessage: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(true);
-export const rdMessageCompo: BehaviorSubject<JSX.Element | null> =
-  new BehaviorSubject<JSX.Element | null>(null);
+export const rdMessageCompo: BehaviorSubject<{
+  element: JSX.Element | null;
+  duration?: number;
+}> = new BehaviorSubject<{ element: JSX.Element | null; duration?: number }>({
+  element: null,
+  duration: 1000,
+});
 export const rdQueueModal: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
 export const rdBottomSheetCompo: BehaviorSubject<JSX.Element | null> =
@@ -85,8 +90,8 @@ export function rdModal(m: JSX.Element | null) {
   rdQueueModal.next(m);
 }
 
-export function rdMessage(m: JSX.Element | null) {
-  rdMessageCompo.next(m);
+export function rdMessage(m: JSX.Element | null, d?: number) {
+  rdMessageCompo.next({ element: m, duration: d });
 }
 
 export function rdDrawer(m: JSX.Element | null) {
@@ -131,7 +136,7 @@ export const RdAppExtends: FC<{
 
   useEffect(() => {
     let countQueue = 0;
-    const queueMessage: JSX.Element[] = [..._blocRdApp.state.messages];
+    const queueMessage: JSX.Element[] = [];
 
     _blocRdApp.stream.subscribe((v) => {
       _setState({ ...v });
@@ -158,29 +163,15 @@ export const RdAppExtends: FC<{
     });
 
     rdMessageCompo.subscribe((v) => {
-      if (v === null && queueMessage.length > 0) {
-        const currentMessage = document.getElementById(`${id}-rd-message`);
-        if (currentMessage && currentMessage.lastElementChild) {
-          currentMessage.lastElementChild.className =
-            currentMessage.lastElementChild.className +
-            " " +
-            (appProps.configs?.classAnimationMessageLeave ??
-              "animation-faded--out");
-          setTimeout(
-            () => {
-              queueMessage.pop();
-            },
-            appProps.configs?.durationMessageLeave ?? 150,
-          );
-        }
-      } else if (
+      if (
         v !== null &&
         queueMessage.length < (appProps.configs?.maxAmountMessage ?? 1)
       ) {
+        const keyMessage = `${id}-wrap-rd-message-${Date.now()}`;
         queueMessage.unshift(
           <div
-            id={`${id}-wrap-rd-message-${queueMessage.length}`}
-            key={queueMessage.length}
+            id={keyMessage}
+            key={keyMessage}
             className={
               (appProps.configs?.classWrapMessage ?? "wrap-rd-message") +
               " " +
@@ -189,27 +180,47 @@ export const RdAppExtends: FC<{
             }
           >
             <div className={appProps.configs?.classMessage ?? "rd-message"}>
-              {v}
+              {v.element}
             </div>
           </div>,
         );
-      }
-      _blocRdApp.state.messages = queueMessage;
-      _blocRdApp.upDateState();
-      setTimeout(
-        () => {
-          const currentMessage = document.getElementById(`${id}-rd-message`);
-          if (currentMessage && currentMessage.firstElementChild) {
-            currentMessage.firstElementChild.className =
-              currentMessage.firstElementChild.className.replaceAll(
-                appProps.configs?.classAnimationMessageEnter ??
-                  "animation-faded--in",
-                "",
-              );
+
+        _blocRdApp.state.messages = queueMessage;
+        _blocRdApp.upDateState();
+
+        setTimeout(
+          () => {
+            const ele = document.getElementById(`${keyMessage}`);
+            if (ele) {
+              ele.className =
+                appProps.configs?.classWrapMessage ?? "wrap-rd-message";
+            }
+          },
+          appProps.configs?.durationMessageEnter ?? 200,
+        );
+
+        setTimeout(() => {
+          const ele = document.getElementById(`${keyMessage}`);
+          if (ele) {
+            ele.className =
+              (appProps.configs?.classWrapMessage ?? "wrap-rd-message") +
+              " " +
+              (appProps.configs?.classAnimationMessageLeave ??
+                "animation-faded--out");
+            setTimeout(
+              () => {
+                const tmpIdx = queueMessage.findIndex((e) => {
+                  return `${e.key}` === `${keyMessage}`;
+                });
+                queueMessage.splice(tmpIdx, 1);
+                _blocRdApp.state.messages = queueMessage;
+                _blocRdApp.upDateState();
+              },
+              appProps.configs?.durationMessageLeave ?? 200,
+            );
           }
-        },
-        appProps.configs?.durationMessageEnter ?? 150,
-      );
+        }, v.duration ?? 1000);
+      }
     });
 
     window &&
@@ -343,9 +354,7 @@ export const RdAppExtends: FC<{
                     "rd-overlay-message"
                   }
                 >
-                  {_state.messages.map((d) => {
-                    return <>{d}</>;
-                  })}
+                  <>{_state.messages}</>
                 </div>,
                 document.body,
                 "rd-message",
