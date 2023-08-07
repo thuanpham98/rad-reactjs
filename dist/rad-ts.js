@@ -72,17 +72,17 @@ function es() {
       var S = v && c[v] || c[w];
       return typeof S == "function" ? S : null;
     }
-    var y = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function m(c) {
+    var m = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+    function y(c) {
       {
         for (var S = arguments.length, x = new Array(S > 1 ? S - 1 : 0), T = 1; T < S; T++)
           x[T - 1] = arguments[T];
-        E("error", c, x);
+        R("error", c, x);
       }
     }
-    function E(c, S, x) {
+    function R(c, S, x) {
       {
-        var T = y.ReactDebugCurrentFrame, A = T.getStackAddendum();
+        var T = m.ReactDebugCurrentFrame, A = T.getStackAddendum();
         A !== "" && (S += "%s", x = x.concat([A]));
         var U = x.map(function(I) {
           return String(I);
@@ -90,10 +90,10 @@ function es() {
         U.unshift("Warning: " + S), Function.prototype.apply.call(console[c], console, U);
       }
     }
-    var R = !1, k = !1, C = !1, _ = !1, P = !1, j;
+    var E = !1, k = !1, C = !1, _ = !1, P = !1, j;
     j = Symbol.for("react.module.reference");
     function F(c) {
-      return !!(typeof c == "string" || typeof c == "function" || c === r || c === s || P || c === i || c === d || c === f || _ || c === p || R || k || C || typeof c == "object" && c !== null && (c.$$typeof === h || c.$$typeof === l || c.$$typeof === a || c.$$typeof === o || c.$$typeof === u || // This needs to include all possible module reference object
+      return !!(typeof c == "string" || typeof c == "function" || c === r || c === s || P || c === i || c === d || c === f || _ || c === p || E || k || C || typeof c == "object" && c !== null && (c.$$typeof === h || c.$$typeof === l || c.$$typeof === a || c.$$typeof === o || c.$$typeof === u || // This needs to include all possible module reference object
       // types supported by any Flight configuration anywhere since
       // we don't know which Flight build this will end up being used
       // with.
@@ -112,7 +112,7 @@ function es() {
     function W(c) {
       if (c == null)
         return null;
-      if (typeof c.tag == "number" && m("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof c == "function")
+      if (typeof c.tag == "number" && y("Received an unexpected object in getComponentNameFromType(). This is likely a bug in React. Please file an issue."), typeof c == "function")
         return c.displayName || c.name || null;
       if (typeof c == "string")
         return c;
@@ -213,10 +213,10 @@ function es() {
             })
           });
         }
-        O < 0 && m("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
+        O < 0 && y("disabledDepth fell below zero. This is a bug in React. Please file an issue.");
       }
     }
-    var de = y.ReactCurrentDispatcher, me;
+    var de = m.ReactCurrentDispatcher, me;
     function be(c, S, x) {
       {
         if (me === void 0)
@@ -342,7 +342,7 @@ function es() {
         }
       return "";
     }
-    var lt = Object.prototype.hasOwnProperty, Sr = {}, Or = y.ReactDebugCurrentFrame;
+    var lt = Object.prototype.hasOwnProperty, Sr = {}, Or = m.ReactDebugCurrentFrame;
     function ct(c) {
       if (c) {
         var S = c._owner, x = ut(c.type, c._source, S ? S.type : null);
@@ -365,7 +365,7 @@ function es() {
             } catch (H) {
               D = H;
             }
-            D && !(D instanceof Error) && (ct(A), m("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", T || "React class", x, I, typeof D), ct(null)), D instanceof Error && !(D.message in Sr) && (Sr[D.message] = !0, ct(A), m("Failed %s type: %s", x, D.message), ct(null));
+            D && !(D instanceof Error) && (ct(A), y("%s: type specification of %s `%s` is invalid; the type checker function must return `null` or an `Error` but returned a %s. You may have forgotten to pass an argument to the type checker creator (arrayOf, instanceOf, objectOf, oneOf, oneOfType, and shape all require an argument).", T || "React class", x, I, typeof D), ct(null)), D instanceof Error && !(D.message in Sr) && (Sr[D.message] = !0, ct(A), y("Failed %s type: %s", x, D.message), ct(null));
           }
       }
     }
@@ -391,9 +391,9 @@ function es() {
     }
     function Er(c) {
       if (_i(c))
-        return m("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", Ci(c)), Rr(c);
+        return y("The provided key is an unsupported type %s. This value must be coerced to a string before before using it here.", Ci(c)), Rr(c);
     }
-    var Be = y.ReactCurrentOwner, ki = {
+    var Be = m.ReactCurrentOwner, ki = {
       key: !0,
       ref: !0,
       __self: !0,
@@ -419,13 +419,13 @@ function es() {
     function Ti(c, S) {
       if (typeof c.ref == "string" && Be.current && S && Be.current.stateNode !== S) {
         var x = W(Be.current.type);
-        It[x] || (m('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', W(Be.current.type), c.ref), It[x] = !0);
+        It[x] || (y('Component "%s" contains the string ref "%s". Support for string refs will be removed in a future major release. This case cannot be automatically converted to an arrow function. We ask you to manually fix this case by using useRef() or createRef() instead. Learn more about using refs safely here: https://reactjs.org/link/strict-mode-string-ref', W(Be.current.type), c.ref), It[x] = !0);
       }
     }
     function Di(c, S) {
       {
         var x = function() {
-          xr || (xr = !0, m("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", S));
+          xr || (xr = !0, y("%s: `key` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", S));
         };
         x.isReactWarning = !0, Object.defineProperty(c, "key", {
           get: x,
@@ -436,7 +436,7 @@ function es() {
     function Ni(c, S) {
       {
         var x = function() {
-          Pr || (Pr = !0, m("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", S));
+          Pr || (Pr = !0, y("%s: `ref` is not a prop. Trying to access it will result in `undefined` being returned. If you need to access the same value within the child component, you should pass it as a different prop. (https://reactjs.org/link/special-props)", S));
         };
         x.isReactWarning = !0, Object.defineProperty(c, "ref", {
           get: x,
@@ -491,7 +491,7 @@ function es() {
         return Ii(c, D, Y, A, T, Be.current, I);
       }
     }
-    var Ft = y.ReactCurrentOwner, Cr = y.ReactDebugCurrentFrame;
+    var Ft = m.ReactCurrentOwner, Cr = m.ReactDebugCurrentFrame;
     function De(c) {
       if (c) {
         var S = c._owner, x = ut(c.type, c._source, S ? S.type : null);
@@ -550,7 +550,7 @@ Check the top-level render call using <` + x + ">.");
           return;
         kr[x] = !0;
         var T = "";
-        c && c._owner && c._owner !== Ft.current && (T = " It was passed a child from " + W(c._owner.type) + "."), De(c), m('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', x, T), De(null);
+        c && c._owner && c._owner !== Ft.current && (T = " It was passed a child from " + W(c._owner.type) + "."), De(c), y('Each child in a list should have a unique "key" prop.%s%s See https://reactjs.org/link/warning-keys for more information.', x, T), De(null);
       }
     }
     function Lr(c, S) {
@@ -592,9 +592,9 @@ Check the top-level render call using <` + x + ">.");
         } else if (S.PropTypes !== void 0 && !At) {
           At = !0;
           var A = W(S);
-          m("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", A || "Unknown");
+          y("Component %s declared `PropTypes` instead of `propTypes`. Did you misspell the property assignment?", A || "Unknown");
         }
-        typeof S.getDefaultProps == "function" && !S.getDefaultProps.isReactClassApproved && m("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
+        typeof S.getDefaultProps == "function" && !S.getDefaultProps.isReactClassApproved && y("getDefaultProps is only used on classic React.createClass definitions. Use a static property named `defaultProps` instead.");
       }
     }
     function qi(c) {
@@ -602,11 +602,11 @@ Check the top-level render call using <` + x + ">.");
         for (var S = Object.keys(c.props), x = 0; x < S.length; x++) {
           var T = S[x];
           if (T !== "children" && T !== "key") {
-            De(c), m("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", T), De(null);
+            De(c), y("Invalid prop `%s` supplied to `React.Fragment`. React.Fragment can only have `key` and `children` props.", T), De(null);
             break;
           }
         }
-        c.ref !== null && (De(c), m("Invalid attribute `ref` supplied to `React.Fragment`."), De(null));
+        c.ref !== null && (De(c), y("Invalid attribute `ref` supplied to `React.Fragment`."), De(null));
       }
     }
     function Tr(c, S, x, T, A, U) {
@@ -618,7 +618,7 @@ Check the top-level render call using <` + x + ">.");
           var Y = Ai(A);
           Y ? D += Y : D += _r();
           var H;
-          c === null ? H = "null" : Nt(c) ? H = "array" : c !== void 0 && c.$$typeof === e ? (H = "<" + (W(c.type) || "Unknown") + " />", D = " Did you accidentally export a JSX literal instead of a component?") : H = typeof c, m("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", H, D);
+          c === null ? H = "null" : Nt(c) ? H = "array" : c !== void 0 && c.$$typeof === e ? (H = "<" + (W(c.type) || "Unknown") + " />", D = " Did you accidentally export a JSX literal instead of a component?") : H = typeof c, y("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", H, D);
         }
         var V = Fi(c, S, x, A, U);
         if (V == null)
@@ -632,7 +632,7 @@ Check the top-level render call using <` + x + ">.");
                   Lr(ee[Ne], c);
                 Object.freeze && Object.freeze(ee);
               } else
-                m("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
+                y("React.jsx: Static children should always be an array. You are likely explicitly calling React.jsxs or React.jsxDEV. Use the Babel transform instead.");
             else
               Lr(ee, c);
         }
@@ -906,8 +906,8 @@ function yt(n) {
 }
 function Qn(n) {
   let e = !1, t = 0, r = !1, i, s, a;
-  const o = new Promise((b, y) => {
-    s = b, a = y;
+  const o = new Promise((b, m) => {
+    s = b, a = m;
   }), u = (b) => {
     r || (p(new Bn(b)), n.abort == null || n.abort());
   }, d = () => {
@@ -919,9 +919,9 @@ function Qn(n) {
   }, p = (b) => {
     r || (r = !0, n.onError == null || n.onError(b), i == null || i(), a(b));
   }, v = () => new Promise((b) => {
-    i = (y) => {
-      const m = r || !l();
-      return m && b(y), m;
+    i = (m) => {
+      const y = r || !l();
+      return y && b(m), y;
     }, n.onPause == null || n.onPause();
   }).then(() => {
     i = void 0, r || n.onContinue == null || n.onContinue();
@@ -931,23 +931,23 @@ function Qn(n) {
     let b;
     try {
       b = n.fn();
-    } catch (y) {
-      b = Promise.reject(y);
+    } catch (m) {
+      b = Promise.reject(m);
     }
-    Promise.resolve(b).then(h).catch((y) => {
-      var m, E;
+    Promise.resolve(b).then(h).catch((m) => {
+      var y, R;
       if (r)
         return;
-      const R = (m = n.retry) != null ? m : 3, k = (E = n.retryDelay) != null ? E : ss, C = typeof k == "function" ? k(t, y) : k, _ = R === !0 || typeof R == "number" && t < R || typeof R == "function" && R(t, y);
+      const E = (y = n.retry) != null ? y : 3, k = (R = n.retryDelay) != null ? R : ss, C = typeof k == "function" ? k(t, m) : k, _ = E === !0 || typeof E == "number" && t < E || typeof E == "function" && E(t, m);
       if (e || !_) {
-        p(y);
+        p(m);
         return;
       }
-      t++, n.onFail == null || n.onFail(t, y), qn(C).then(() => {
+      t++, n.onFail == null || n.onFail(t, m), qn(C).then(() => {
         if (l())
           return v();
       }).then(() => {
-        e ? p(y) : w();
+        e ? p(m) : w();
       });
     });
   };
@@ -1167,8 +1167,8 @@ class os extends Hn {
         type: "error",
         error: p
       }), !yt(p)) {
-        var v, w, b, y;
-        (v = (w = this.cache.config).onError) == null || v.call(w, p, this), (b = (y = this.cache.config).onSettled) == null || b.call(y, this.state.data, p, this), process.env.NODE_ENV !== "production" && this.logger.error(p);
+        var v, w, b, m;
+        (v = (w = this.cache.config).onError) == null || v.call(w, p, this), (b = (m = this.cache.config).onSettled) == null || b.call(m, this.state.data, p, this), process.env.NODE_ENV !== "production" && this.logger.error(p);
       }
       this.isFetchingOptimistic || this.scheduleGc(), this.isFetchingOptimistic = !1;
     };
@@ -1176,12 +1176,12 @@ class os extends Hn {
       fn: f.fetchFn,
       abort: a == null ? void 0 : a.abort.bind(a),
       onSuccess: (p) => {
-        var v, w, b, y;
+        var v, w, b, m;
         if (typeof p > "u") {
           process.env.NODE_ENV !== "production" && this.logger.error("Query data cannot be undefined. Please make sure to return a value other than undefined from your query function. Affected query key: " + this.queryHash), h(new Error(this.queryHash + " data is undefined"));
           return;
         }
-        this.setData(p), (v = (w = this.cache.config).onSuccess) == null || v.call(w, p, this), (b = (y = this.cache.config).onSettled) == null || b.call(y, p, this.state.error, this), this.isFetchingOptimistic || this.scheduleGc(), this.isFetchingOptimistic = !1;
+        this.setData(p), (v = (w = this.cache.config).onSuccess) == null || v.call(w, p, this), (b = (m = this.cache.config).onSettled) == null || b.call(m, p, this.state.error, this), this.isFetchingOptimistic || this.scheduleGc(), this.isFetchingOptimistic = !1;
       },
       onError: h,
       onFail: (p, v) => {
@@ -1472,8 +1472,8 @@ class cs extends Hn {
       }), _;
     } catch (_) {
       try {
-        var w, b, y, m, E, R, k, C;
-        throw await ((w = (b = this.mutationCache.config).onError) == null ? void 0 : w.call(b, _, this.state.variables, this.state.context, this)), process.env.NODE_ENV !== "production" && this.logger.error(_), await ((y = (m = this.options).onError) == null ? void 0 : y.call(m, _, this.state.variables, this.state.context)), await ((E = (R = this.mutationCache.config).onSettled) == null ? void 0 : E.call(R, void 0, _, this.state.variables, this.state.context, this)), await ((k = (C = this.options).onSettled) == null ? void 0 : k.call(C, void 0, _, this.state.variables, this.state.context)), _;
+        var w, b, m, y, R, E, k, C;
+        throw await ((w = (b = this.mutationCache.config).onError) == null ? void 0 : w.call(b, _, this.state.variables, this.state.context, this)), process.env.NODE_ENV !== "production" && this.logger.error(_), await ((m = (y = this.options).onError) == null ? void 0 : m.call(y, _, this.state.variables, this.state.context)), await ((R = (E = this.mutationCache.config).onSettled) == null ? void 0 : R.call(E, void 0, _, this.state.variables, this.state.context, this)), await ((k = (C = this.options).onSettled) == null ? void 0 : k.call(C, void 0, _, this.state.variables, this.state.context)), _;
       } finally {
         this.dispatch({
           type: "error",
@@ -1648,7 +1648,7 @@ function hs() {
               return n.signal;
             }
           });
-        }, y = n.options.queryFn || (() => Promise.reject("Missing queryFn")), m = (C, _, P, j) => (v = j ? [_, ...v] : [...v, _], j ? [P, ...C] : [...C, P]), E = (C, _, P, j) => {
+        }, m = n.options.queryFn || (() => Promise.reject("Missing queryFn")), y = (C, _, P, j) => (v = j ? [_, ...v] : [...v, _], j ? [P, ...C] : [...C, P]), R = (C, _, P, j) => {
           if (w)
             return Promise.reject("Cancelled");
           if (typeof P > "u" && !_ && C.length)
@@ -1659,32 +1659,32 @@ function hs() {
             meta: n.options.meta
           };
           b(F);
-          const q = y(F);
-          return Promise.resolve(q).then((W) => m(C, P, W, j));
+          const q = m(F);
+          return Promise.resolve(q).then((W) => y(C, P, W, j));
         };
-        let R;
+        let E;
         if (!h.length)
-          R = E([]);
+          E = R([]);
         else if (f) {
           const C = typeof d < "u", _ = C ? d : Qr(n.options, h);
-          R = E(h, C, _);
+          E = R(h, C, _);
         } else if (l) {
           const C = typeof d < "u", _ = C ? d : ps(n.options, h);
-          R = E(h, C, _, !0);
+          E = R(h, C, _, !0);
         } else {
           v = [];
           const C = typeof n.options.getNextPageParam > "u";
-          R = (o && h[0] ? o(h[0], 0, h) : !0) ? E([], C, p[0]) : Promise.resolve(m([], p[0], h[0]));
+          E = (o && h[0] ? o(h[0], 0, h) : !0) ? R([], C, p[0]) : Promise.resolve(y([], p[0], h[0]));
           for (let P = 1; P < h.length; P++)
-            R = R.then((j) => {
+            E = E.then((j) => {
               if (o && h[P] ? o(h[P], P, h) : !0) {
                 const q = C ? p[P] : Qr(n.options, j);
-                return E(j, C, q);
+                return R(j, C, q);
               }
-              return Promise.resolve(m(j, p[P], h[P]));
+              return Promise.resolve(y(j, p[P], h[P]));
             });
         }
-        return R.then((C) => ({
+        return E.then((C) => ({
           pages: C,
           pageParams: v
         }));
@@ -2016,25 +2016,25 @@ class vs extends tt {
       errorUpdatedAt: v,
       fetchStatus: w,
       status: b
-    } = l, y = !1, m = !1, E;
+    } = l, m = !1, y = !1, R;
     if (t._optimisticResults) {
       const P = this.hasListeners(), j = !P && Hr(e, t), F = P && Vr(e, r, t, i);
       (j || F) && (w = Lt(e.options.networkMode) ? "fetching" : "paused", h || (b = "loading")), t._optimisticResults === "isRestoring" && (w = "idle");
     }
     if (t.keepPreviousData && !l.dataUpdatedAt && f != null && f.isSuccess && b !== "error")
-      E = f.data, h = f.dataUpdatedAt, b = f.status, y = !0;
+      R = f.data, h = f.dataUpdatedAt, b = f.status, m = !0;
     else if (t.select && typeof l.data < "u")
       if (s && l.data === (a == null ? void 0 : a.data) && t.select === this.selectFn)
-        E = this.selectResult;
+        R = this.selectResult;
       else
         try {
-          this.selectFn = t.select, E = t.select(l.data), E = Yt(s == null ? void 0 : s.data, E, t), this.selectResult = E, this.selectError = null;
+          this.selectFn = t.select, R = t.select(l.data), R = Yt(s == null ? void 0 : s.data, R, t), this.selectResult = R, this.selectError = null;
         } catch (P) {
           process.env.NODE_ENV !== "production" && this.client.getLogger().error(P), this.selectError = P;
         }
     else
-      E = l.data;
-    if (typeof t.placeholderData < "u" && typeof E > "u" && b === "loading") {
+      R = l.data;
+    if (typeof t.placeholderData < "u" && typeof R > "u" && b === "loading") {
       let P;
       if (s != null && s.isPlaceholderData && t.placeholderData === (o == null ? void 0 : o.placeholderData))
         P = s.data;
@@ -2044,18 +2044,18 @@ class vs extends tt {
         } catch (j) {
           process.env.NODE_ENV !== "production" && this.client.getLogger().error(j), this.selectError = j;
         }
-      typeof P < "u" && (b = "success", E = Yt(s == null ? void 0 : s.data, P, t), m = !0);
+      typeof P < "u" && (b = "success", R = Yt(s == null ? void 0 : s.data, P, t), y = !0);
     }
-    this.selectError && (p = this.selectError, E = this.selectResult, v = Date.now(), b = "error");
-    const R = w === "fetching", k = b === "loading", C = b === "error";
+    this.selectError && (p = this.selectError, R = this.selectResult, v = Date.now(), b = "error");
+    const E = w === "fetching", k = b === "loading", C = b === "error";
     return {
       status: b,
       fetchStatus: w,
       isLoading: k,
       isSuccess: b === "success",
       isError: C,
-      isInitialLoading: k && R,
-      data: E,
+      isInitialLoading: k && E,
+      data: R,
       dataUpdatedAt: h,
       error: p,
       errorUpdatedAt: v,
@@ -2064,12 +2064,12 @@ class vs extends tt {
       errorUpdateCount: l.errorUpdateCount,
       isFetched: l.dataUpdateCount > 0 || l.errorUpdateCount > 0,
       isFetchedAfterMount: l.dataUpdateCount > d.dataUpdateCount || l.errorUpdateCount > d.errorUpdateCount,
-      isFetching: R,
-      isRefetching: R && !k,
+      isFetching: E,
+      isRefetching: E && !k,
       isLoadingError: C && l.dataUpdatedAt === 0,
       isPaused: w === "paused",
-      isPlaceholderData: m,
-      isPreviousData: y,
+      isPlaceholderData: y,
+      isPreviousData: m,
       isRefetchError: C && l.dataUpdatedAt !== 0,
       isStale: mr(e, t),
       refetch: this.refetch,
@@ -2213,45 +2213,45 @@ function bs() {
   return $r || ($r = 1, process.env.NODE_ENV !== "production" && function() {
     typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
     var n = _t, e = n.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
-    function t(E) {
+    function t(R) {
       {
-        for (var R = arguments.length, k = new Array(R > 1 ? R - 1 : 0), C = 1; C < R; C++)
+        for (var E = arguments.length, k = new Array(E > 1 ? E - 1 : 0), C = 1; C < E; C++)
           k[C - 1] = arguments[C];
-        r("error", E, k);
+        r("error", R, k);
       }
     }
-    function r(E, R, k) {
+    function r(R, E, k) {
       {
         var C = e.ReactDebugCurrentFrame, _ = C.getStackAddendum();
-        _ !== "" && (R += "%s", k = k.concat([_]));
+        _ !== "" && (E += "%s", k = k.concat([_]));
         var P = k.map(function(j) {
           return String(j);
         });
-        P.unshift("Warning: " + R), Function.prototype.apply.call(console[E], console, P);
+        P.unshift("Warning: " + E), Function.prototype.apply.call(console[R], console, P);
       }
     }
-    function i(E, R) {
-      return E === R && (E !== 0 || 1 / E === 1 / R) || E !== E && R !== R;
+    function i(R, E) {
+      return R === E && (R !== 0 || 1 / R === 1 / E) || R !== R && E !== E;
     }
     var s = typeof Object.is == "function" ? Object.is : i, a = n.useState, o = n.useEffect, u = n.useLayoutEffect, d = n.useDebugValue, f = !1, l = !1;
-    function h(E, R, k) {
+    function h(R, E, k) {
       f || n.startTransition !== void 0 && (f = !0, t("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
-      var C = R();
+      var C = E();
       if (!l) {
-        var _ = R();
+        var _ = E();
         s(C, _) || (t("The result of getSnapshot should be cached to avoid an infinite loop"), l = !0);
       }
       var P = a({
         inst: {
           value: C,
-          getSnapshot: R
+          getSnapshot: E
         }
       }), j = P[0].inst, F = P[1];
       return u(function() {
-        j.value = C, j.getSnapshot = R, p(j) && F({
+        j.value = C, j.getSnapshot = E, p(j) && F({
           inst: j
         });
-      }, [E, C, R]), o(function() {
+      }, [R, C, E]), o(function() {
         p(j) && F({
           inst: j
         });
@@ -2260,23 +2260,23 @@ function bs() {
             inst: j
           });
         };
-        return E(q);
-      }, [E]), d(C), C;
+        return R(q);
+      }, [R]), d(C), C;
     }
-    function p(E) {
-      var R = E.getSnapshot, k = E.value;
+    function p(R) {
+      var E = R.getSnapshot, k = R.value;
       try {
-        var C = R();
+        var C = E();
         return !s(k, C);
       } catch {
         return !0;
       }
     }
-    function v(E, R, k) {
-      return R();
+    function v(R, E, k) {
+      return E();
     }
-    var w = typeof window < "u" && typeof window.document < "u" && typeof window.document.createElement < "u", b = !w, y = b ? v : h, m = n.useSyncExternalStore !== void 0 ? n.useSyncExternalStore : y;
-    qt.useSyncExternalStore = m, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+    var w = typeof window < "u" && typeof window.document < "u" && typeof window.document.createElement < "u", b = !w, m = b ? v : h, y = n.useSyncExternalStore !== void 0 ? n.useSyncExternalStore : m;
+    qt.useSyncExternalStore = y, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
   }()), qt;
 }
 process.env.NODE_ENV === "production" ? Zt.exports = ms() : Zt.exports = bs();
@@ -2700,18 +2700,18 @@ function na(n) {
   function v() {
     return a.getFixedT(e.lng || null, d.nsMode === "fallback" ? h : h[0], l);
   }
-  var w = kt(v), b = ta(w, 2), y = b[0], m = b[1], E = h.join();
-  e.lng && (E = "".concat(e.lng).concat(E));
-  var R = ra(E), k = Ge(!0);
+  var w = kt(v), b = ta(w, 2), m = b[0], y = b[1], R = h.join();
+  e.lng && (R = "".concat(e.lng).concat(R));
+  var E = ra(R), k = Ge(!0);
   Ue(function() {
     var P = d.bindI18n, j = d.bindI18nStore;
     k.current = !0, !p && !f && (e.lng ? Yr(a, e.lng, h, function() {
-      k.current && m(v);
+      k.current && y(v);
     }) : Jr(a, h, function() {
-      k.current && m(v);
-    })), p && R && R !== E && k.current && m(v);
+      k.current && y(v);
+    })), p && E && E !== R && k.current && y(v);
     function F() {
-      k.current && m(v);
+      k.current && y(v);
     }
     return P && a && a.on(P, F), j && a && a.store.on(j, F), function() {
       k.current = !1, P && a && P.split(" ").forEach(function(q) {
@@ -2720,13 +2720,13 @@ function na(n) {
         return a.store.off(q, F);
       });
     };
-  }, [a, E]);
+  }, [a, R]);
   var C = Ge(!0);
   Ue(function() {
-    k.current && !C.current && m(v), C.current = !1;
+    k.current && !C.current && y(v), C.current = !1;
   }, [a, l]);
-  var _ = [y, a, p];
-  if (_.t = y, _.i18n = a, _.ready = p, p || !p && !f)
+  var _ = [m, a, p];
+  if (_.t = m, _.i18n = a, _.ready = p, p || !p && !f)
     return _;
   throw new Promise(function(P) {
     e.lng ? Yr(a, e.lng, h, function() {
@@ -3315,35 +3315,35 @@ var ln = {}, cn = function(n) {
           usedNS: p
         } : l;
       }
-      var y = this.resolve(i, s), m = y && y.res, E = y && y.usedKey || l, R = y && y.exactUsedKey || l, k = Object.prototype.toString.apply(m), C = ["[object Number]", "[object Function]", "[object RegExp]"], _ = s.joinArrays !== void 0 ? s.joinArrays : this.options.joinArrays, P = !this.i18nFormat || this.i18nFormat.handleAsObject, j = typeof m != "string" && typeof m != "boolean" && typeof m != "number";
-      if (P && m && j && C.indexOf(k) < 0 && !(typeof _ == "string" && k === "[object Array]")) {
+      var m = this.resolve(i, s), y = m && m.res, R = m && m.usedKey || l, E = m && m.exactUsedKey || l, k = Object.prototype.toString.apply(y), C = ["[object Number]", "[object Function]", "[object RegExp]"], _ = s.joinArrays !== void 0 ? s.joinArrays : this.options.joinArrays, P = !this.i18nFormat || this.i18nFormat.handleAsObject, j = typeof y != "string" && typeof y != "boolean" && typeof y != "number";
+      if (P && y && j && C.indexOf(k) < 0 && !(typeof _ == "string" && k === "[object Array]")) {
         if (!s.returnObjects && !this.options.returnObjects) {
           this.options.returnedObjectHandler || this.logger.warn("accessing an object - but returnObjects options is not enabled!");
-          var F = this.options.returnedObjectHandler ? this.options.returnedObjectHandler(E, m, J(J({}, s), {}, {
+          var F = this.options.returnedObjectHandler ? this.options.returnedObjectHandler(R, y, J(J({}, s), {}, {
             ns: h
           })) : "key '".concat(l, " (").concat(this.language, ")' returned an object instead of string.");
-          return u ? (y.res = F, y) : F;
+          return u ? (m.res = F, m) : F;
         }
         if (d) {
-          var q = k === "[object Array]", se = q ? [] : {}, W = q ? R : E;
-          for (var g in m)
-            if (Object.prototype.hasOwnProperty.call(m, g)) {
+          var q = k === "[object Array]", se = q ? [] : {}, W = q ? E : R;
+          for (var g in y)
+            if (Object.prototype.hasOwnProperty.call(y, g)) {
               var O = "".concat(W).concat(d).concat(g);
               se[g] = this.translate(O, J(J({}, s), {
                 joinArrays: !1,
                 ns: h
-              })), se[g] === O && (se[g] = m[g]);
+              })), se[g] === O && (se[g] = y[g]);
             }
-          m = se;
+          y = se;
         }
       } else if (P && typeof _ == "string" && k === "[object Array]")
-        m = m.join(_), m && (m = this.extendTranslation(m, i, s, a));
+        y = y.join(_), y && (y = this.extendTranslation(y, i, s, a));
       else {
         var L = !1, B = !1, Q = s.count !== void 0 && typeof s.count != "string", N = t.hasDefaultValue(s), fe = Q ? this.pluralResolver.getSuffix(v, s.count, s) : "", Z = s["defaultValue".concat(fe)] || s.defaultValue;
-        !this.isValidLookup(m) && N && (L = !0, m = Z), this.isValidLookup(m) || (B = !0, m = l);
-        var ye = s.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey, it = ye && B ? void 0 : m, Pe = N && Z !== m && this.options.updateMissing;
+        !this.isValidLookup(y) && N && (L = !0, y = Z), this.isValidLookup(y) || (B = !0, y = l);
+        var ye = s.missingKeyNoValueFallbackToKey || this.options.missingKeyNoValueFallbackToKey, it = ye && B ? void 0 : y, Pe = N && Z !== y && this.options.updateMissing;
         if (B || L || Pe) {
-          if (this.logger.log(Pe ? "updateKey" : "missingKey", v, p, l, Pe ? Z : m), d) {
+          if (this.logger.log(Pe ? "updateKey" : "missingKey", v, p, l, Pe ? Z : y), d) {
             var st = this.resolve(l, J(J({}, s), {}, {
               keySeparator: !1
             }));
@@ -3356,8 +3356,8 @@ var ln = {}, cn = function(n) {
           else
             this.options.saveMissingTo === "all" ? de = this.languageUtils.toResolveHierarchy(s.lng || this.language) : de.push(s.lng || this.language);
           var Le = function(Se, Te, at) {
-            var ot = N && at !== m ? at : it;
-            o.options.missingKeyHandler ? o.options.missingKeyHandler(Se, p, Te, ot, Pe, s) : o.backendConnector && o.backendConnector.saveMissing && o.backendConnector.saveMissing(Se, p, Te, ot, Pe, s), o.emit("missingKey", Se, p, Te, m);
+            var ot = N && at !== y ? at : it;
+            o.options.missingKeyHandler ? o.options.missingKeyHandler(Se, p, Te, ot, Pe, s) : o.backendConnector && o.backendConnector.saveMissing && o.backendConnector.saveMissing(Se, p, Te, ot, Pe, s), o.emit("missingKey", Se, p, Te, y);
           };
           this.options.saveMissing && (this.options.saveMissingPlurals && Q ? de.forEach(function(we) {
             o.pluralResolver.getSuffixes(we, s).forEach(function(Se) {
@@ -3365,9 +3365,9 @@ var ln = {}, cn = function(n) {
             });
           }) : Le(de, l, Z));
         }
-        m = this.extendTranslation(m, i, s, y, a), B && m === l && this.options.appendNamespaceToMissingKey && (m = "".concat(p, ":").concat(l)), (B || L) && this.options.parseMissingKeyHandler && (this.options.compatibilityAPI !== "v1" ? m = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? "".concat(p, ":").concat(l) : l, L ? m : void 0) : m = this.options.parseMissingKeyHandler(m));
+        y = this.extendTranslation(y, i, s, m, a), B && y === l && this.options.appendNamespaceToMissingKey && (y = "".concat(p, ":").concat(l)), (B || L) && this.options.parseMissingKeyHandler && (this.options.compatibilityAPI !== "v1" ? y = this.options.parseMissingKeyHandler(this.options.appendNamespaceToMissingKey ? "".concat(p, ":").concat(l) : l, L ? y : void 0) : y = this.options.parseMissingKeyHandler(y));
       }
-      return u ? (y.res = m, y) : m;
+      return u ? (m.res = y, m) : y;
     }
   }, {
     key: "extendTranslation",
@@ -3392,13 +3392,13 @@ var ln = {}, cn = function(n) {
           l < w && (a.nest = !1);
         }
         !a.lng && this.options.compatibilityAPI !== "v1" && o && o.res && (a.lng = o.usedLng), a.nest !== !1 && (i = this.interpolator.nest(i, function() {
-          for (var m = arguments.length, E = new Array(m), R = 0; R < m; R++)
-            E[R] = arguments[R];
-          return u && u[0] === E[0] && !a.context ? (d.logger.warn("It seems you are nesting recursively key: ".concat(E[0], " in key: ").concat(s[0])), null) : d.translate.apply(d, E.concat([s]));
+          for (var y = arguments.length, R = new Array(y), E = 0; E < y; E++)
+            R[E] = arguments[E];
+          return u && u[0] === R[0] && !a.context ? (d.logger.warn("It seems you are nesting recursively key: ".concat(R[0], " in key: ").concat(s[0])), null) : d.translate.apply(d, R.concat([s]));
         }, a)), a.interpolation && this.interpolator.reset();
       }
-      var b = a.postProcess || this.options.postProcess, y = typeof b == "string" ? [b] : b;
-      return i != null && y && y.length && a.applyPostProcessor !== !1 && (i = ri.handle(y, i, s, this.options && this.options.postProcessPassResolved ? J({
+      var b = a.postProcess || this.options.postProcess, m = typeof b == "string" ? [b] : b;
+      return i != null && m && m.length && a.applyPostProcessor !== !1 && (i = ri.handle(m, i, s, this.options && this.options.postProcessPassResolved ? J({
         i18nResolved: o
       }, a) : a, this)), i;
     }
@@ -3412,25 +3412,25 @@ var ln = {}, cn = function(n) {
           u = v;
           var w = p.namespaces;
           s.options.fallbackNS && (w = w.concat(s.options.fallbackNS));
-          var b = a.count !== void 0 && typeof a.count != "string", y = b && !a.ordinal && a.count === 0 && s.pluralResolver.shouldUseIntlApi(), m = a.context !== void 0 && (typeof a.context == "string" || typeof a.context == "number") && a.context !== "", E = a.lngs ? a.lngs : s.languageUtils.toResolveHierarchy(a.lng || s.language, a.fallbackLng);
-          w.forEach(function(R) {
-            s.isValidLookup(o) || (l = R, !ln["".concat(E[0], "-").concat(R)] && s.utils && s.utils.hasLoadedNamespace && !s.utils.hasLoadedNamespace(l) && (ln["".concat(E[0], "-").concat(R)] = !0, s.logger.warn('key "'.concat(u, '" for languages "').concat(E.join(", "), `" won't get resolved as namespace "`).concat(l, '" was not yet loaded'), "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!")), E.forEach(function(k) {
+          var b = a.count !== void 0 && typeof a.count != "string", m = b && !a.ordinal && a.count === 0 && s.pluralResolver.shouldUseIntlApi(), y = a.context !== void 0 && (typeof a.context == "string" || typeof a.context == "number") && a.context !== "", R = a.lngs ? a.lngs : s.languageUtils.toResolveHierarchy(a.lng || s.language, a.fallbackLng);
+          w.forEach(function(E) {
+            s.isValidLookup(o) || (l = E, !ln["".concat(R[0], "-").concat(E)] && s.utils && s.utils.hasLoadedNamespace && !s.utils.hasLoadedNamespace(l) && (ln["".concat(R[0], "-").concat(E)] = !0, s.logger.warn('key "'.concat(u, '" for languages "').concat(R.join(", "), `" won't get resolved as namespace "`).concat(l, '" was not yet loaded'), "This means something IS WRONG in your setup. You access the t function before i18next.init / i18next.loadNamespace / i18next.changeLanguage was done. Wait for the callback or Promise to resolve before accessing it!!!")), R.forEach(function(k) {
               if (!s.isValidLookup(o)) {
                 f = k;
                 var C = [v];
                 if (s.i18nFormat && s.i18nFormat.addLookupKeys)
-                  s.i18nFormat.addLookupKeys(C, v, k, R, a);
+                  s.i18nFormat.addLookupKeys(C, v, k, E, a);
                 else {
                   var _;
                   b && (_ = s.pluralResolver.getSuffix(k, a.count, a));
                   var P = "".concat(s.options.pluralSeparator, "zero");
-                  if (b && (C.push(v + _), y && C.push(v + P)), m) {
+                  if (b && (C.push(v + _), m && C.push(v + P)), y) {
                     var j = "".concat(v).concat(s.options.contextSeparator).concat(a.context);
-                    C.push(j), b && (C.push(j + _), y && C.push(j + P));
+                    C.push(j), b && (C.push(j + _), m && C.push(j + P));
                   }
                 }
                 for (var F; F = C.pop(); )
-                  s.isValidLookup(o) || (d = F, o = s.getResource(k, R, F, a));
+                  s.isValidLookup(o) || (d = F, o = s.getResource(k, E, F, a));
               }
             }));
           });
@@ -3868,48 +3868,48 @@ var Pa = function() {
       function l(b) {
         return b.replace(/\$/g, "$$$$");
       }
-      var h = function(y) {
-        if (y.indexOf(a.formatSeparator) < 0) {
-          var m = pn(r, f, y, a.options.keySeparator, a.options.ignoreJSONStructure);
-          return a.alwaysFormat ? a.format(m, void 0, i, ie(ie(ie({}, s), r), {}, {
-            interpolationkey: y
-          })) : m;
+      var h = function(m) {
+        if (m.indexOf(a.formatSeparator) < 0) {
+          var y = pn(r, f, m, a.options.keySeparator, a.options.ignoreJSONStructure);
+          return a.alwaysFormat ? a.format(y, void 0, i, ie(ie(ie({}, s), r), {}, {
+            interpolationkey: m
+          })) : y;
         }
-        var E = y.split(a.formatSeparator), R = E.shift().trim(), k = E.join(a.formatSeparator).trim();
-        return a.format(pn(r, f, R, a.options.keySeparator, a.options.ignoreJSONStructure), k, i, ie(ie(ie({}, s), r), {}, {
-          interpolationkey: R
+        var R = m.split(a.formatSeparator), E = R.shift().trim(), k = R.join(a.formatSeparator).trim();
+        return a.format(pn(r, f, E, a.options.keySeparator, a.options.ignoreJSONStructure), k, i, ie(ie(ie({}, s), r), {}, {
+          interpolationkey: E
         }));
       };
       this.resetRegExp();
       var p = s && s.missingInterpolationHandler || this.options.missingInterpolationHandler, v = s && s.interpolation && s.interpolation.skipOnVariables !== void 0 ? s.interpolation.skipOnVariables : this.options.interpolation.skipOnVariables, w = [{
         regex: this.regexpUnescape,
-        safeValue: function(y) {
-          return l(y);
+        safeValue: function(m) {
+          return l(m);
         }
       }, {
         regex: this.regexp,
-        safeValue: function(y) {
-          return a.escapeValue ? l(a.escape(y)) : l(y);
+        safeValue: function(m) {
+          return a.escapeValue ? l(a.escape(m)) : l(m);
         }
       }];
       return w.forEach(function(b) {
         for (d = 0; o = b.regex.exec(t); ) {
-          var y = o[1].trim();
-          if (u = h(y), u === void 0)
+          var m = o[1].trim();
+          if (u = h(m), u === void 0)
             if (typeof p == "function") {
-              var m = p(t, o, s);
-              u = typeof m == "string" ? m : "";
-            } else if (s && Object.prototype.hasOwnProperty.call(s, y))
+              var y = p(t, o, s);
+              u = typeof y == "string" ? y : "";
+            } else if (s && Object.prototype.hasOwnProperty.call(s, m))
               u = "";
             else if (v) {
               u = o[0];
               continue;
             } else
-              a.logger.warn("missed to pass in variable ".concat(y, " for interpolating ").concat(t)), u = "";
+              a.logger.warn("missed to pass in variable ".concat(m, " for interpolating ").concat(t)), u = "";
           else
             typeof u != "string" && !a.useRawValueToEscape && (u = sn(u));
-          var E = b.safeValue(u);
-          if (t = t.replace(o[0], E), v ? (b.regex.lastIndex += u.length, b.regex.lastIndex -= o[0].length) : b.regex.lastIndex = 0, d++, d >= a.maxReplaces)
+          var R = b.safeValue(u);
+          if (t = t.replace(o[0], R), v ? (b.regex.lastIndex += u.length, b.regex.lastIndex -= o[0].length) : b.regex.lastIndex = 0, d++, d >= a.maxReplaces)
             break;
         }
       }), t;
@@ -3922,14 +3922,14 @@ var Pa = function() {
         var w = this.nestingOptionsSeparator;
         if (p.indexOf(w) < 0)
           return p;
-        var b = p.split(new RegExp("".concat(w, "[ ]*{"))), y = "{".concat(b[1]);
-        p = b[0], y = this.interpolate(y, u);
-        var m = y.match(/'/g), E = y.match(/"/g);
-        (m && m.length % 2 === 0 && !E || E.length % 2 !== 0) && (y = y.replace(/'/g, '"'));
+        var b = p.split(new RegExp("".concat(w, "[ ]*{"))), m = "{".concat(b[1]);
+        p = b[0], m = this.interpolate(m, u);
+        var y = m.match(/'/g), R = m.match(/"/g);
+        (y && y.length % 2 === 0 && !R || R.length % 2 !== 0) && (m = m.replace(/'/g, '"'));
         try {
-          u = JSON.parse(y), v && (u = ie(ie({}, v), u));
-        } catch (R) {
-          return this.logger.warn("failed parsing options string in nesting for key ".concat(p), R), "".concat(p).concat(w).concat(y);
+          u = JSON.parse(m), v && (u = ie(ie({}, v), u));
+        } catch (E) {
+          return this.logger.warn("failed parsing options string in nesting for key ".concat(p), E), "".concat(p).concat(w).concat(m);
         }
         return delete u.defaultValue, p;
       }
@@ -4074,8 +4074,8 @@ var _a = function() {
           try {
             var w = a && a.formatParams && a.formatParams[a.interpolationkey] || {}, b = w.locale || w.lng || a.locale || a.lng || i;
             v = s.formats[h](d, b, pe(pe(pe({}, p), a), w));
-          } catch (y) {
-            s.logger.warn(y);
+          } catch (m) {
+            s.logger.warn(m);
           }
           return v;
         } else
@@ -4202,8 +4202,8 @@ var Ta = function(n) {
       this.readingCalls++;
       var l = function(w, b) {
         if (o.readingCalls--, o.waitingReads.length > 0) {
-          var y = o.waitingReads.shift();
-          o.read(y.lng, y.ns, y.fcName, y.tried, y.wait, y.callback);
+          var m = o.waitingReads.shift();
+          o.read(m.lng, m.ns, m.fcName, m.tried, m.wait, m.callback);
         }
         if (w && b && u < o.maxRetries) {
           setTimeout(function() {
@@ -4431,8 +4431,8 @@ var Rt = function(n) {
       typeof s == "function" && (a = s, s = {}), !s.defaultNS && s.defaultNS !== !1 && s.ns && (typeof s.ns == "string" ? s.defaultNS = s.ns : s.ns.indexOf("translation") < 0 && (s.defaultNS = s.ns[0]));
       var o = mn();
       this.options = ae(ae(ae({}, o), this.options), bn(s)), this.options.compatibilityAPI !== "v1" && (this.options.interpolation = ae(ae({}, o.interpolation), this.options.interpolation)), s.keySeparator !== void 0 && (this.options.userDefinedKeySeparator = s.keySeparator), s.nsSeparator !== void 0 && (this.options.userDefinedNsSeparator = s.nsSeparator);
-      function u(y) {
-        return y ? typeof y == "function" ? new y() : y : null;
+      function u(m) {
+        return m ? typeof m == "function" ? new m() : m : null;
       }
       if (!this.options.isClone) {
         this.modules.logger ? oe.init(u(this.modules.logger), this.options) : oe.init(null, this.options);
@@ -4447,16 +4447,16 @@ var Rt = function(n) {
           simplifyPluralSuffix: this.options.simplifyPluralSuffix
         }), d && (!this.options.interpolation.format || this.options.interpolation.format === o.interpolation.format) && (l.formatter = u(d), l.formatter.init(l, this.options), this.options.interpolation.format = l.formatter.format.bind(l.formatter)), l.interpolator = new Pa(this.options), l.utils = {
           hasLoadedNamespace: this.hasLoadedNamespace.bind(this)
-        }, l.backendConnector = new Ta(u(this.modules.backend), l.resourceStore, l, this.options), l.backendConnector.on("*", function(y) {
-          for (var m = arguments.length, E = new Array(m > 1 ? m - 1 : 0), R = 1; R < m; R++)
-            E[R - 1] = arguments[R];
-          i.emit.apply(i, [y].concat(E));
-        }), this.modules.languageDetector && (l.languageDetector = u(this.modules.languageDetector), l.languageDetector.init && l.languageDetector.init(l, this.options.detection, this.options)), this.modules.i18nFormat && (l.i18nFormat = u(this.modules.i18nFormat), l.i18nFormat.init && l.i18nFormat.init(this)), this.translator = new cn(this.services, this.options), this.translator.on("*", function(y) {
-          for (var m = arguments.length, E = new Array(m > 1 ? m - 1 : 0), R = 1; R < m; R++)
-            E[R - 1] = arguments[R];
-          i.emit.apply(i, [y].concat(E));
-        }), this.modules.external.forEach(function(y) {
-          y.init && y.init(i);
+        }, l.backendConnector = new Ta(u(this.modules.backend), l.resourceStore, l, this.options), l.backendConnector.on("*", function(m) {
+          for (var y = arguments.length, R = new Array(y > 1 ? y - 1 : 0), E = 1; E < y; E++)
+            R[E - 1] = arguments[E];
+          i.emit.apply(i, [m].concat(R));
+        }), this.modules.languageDetector && (l.languageDetector = u(this.modules.languageDetector), l.languageDetector.init && l.languageDetector.init(l, this.options.detection, this.options)), this.modules.i18nFormat && (l.i18nFormat = u(this.modules.i18nFormat), l.i18nFormat.init && l.i18nFormat.init(this)), this.translator = new cn(this.services, this.options), this.translator.on("*", function(m) {
+          for (var y = arguments.length, R = new Array(y > 1 ? y - 1 : 0), E = 1; E < y; E++)
+            R[E - 1] = arguments[E];
+          i.emit.apply(i, [m].concat(R));
+        }), this.modules.external.forEach(function(m) {
+          m.init && m.init(i);
         });
       }
       if (this.format = this.options.interpolation.format, a || (a = dt), this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
@@ -4465,26 +4465,26 @@ var Rt = function(n) {
       }
       !this.services.languageDetector && !this.options.lng && this.logger.warn("init: no languageDetector is used and no lng is defined");
       var p = ["getResource", "hasResourceBundle", "getResourceBundle", "getDataByLanguage"];
-      p.forEach(function(y) {
-        i[y] = function() {
-          var m;
-          return (m = i.store)[y].apply(m, arguments);
+      p.forEach(function(m) {
+        i[m] = function() {
+          var y;
+          return (y = i.store)[m].apply(y, arguments);
         };
       });
       var v = ["addResource", "addResources", "addResourceBundle", "removeResourceBundle"];
-      v.forEach(function(y) {
-        i[y] = function() {
-          var m;
-          return (m = i.store)[y].apply(m, arguments), i;
+      v.forEach(function(m) {
+        i[m] = function() {
+          var y;
+          return (y = i.store)[m].apply(y, arguments), i;
         };
       });
       var w = Ke(), b = function() {
-        var m = function(R, k) {
-          i.isInitialized && !i.initializedStoreOnce && i.logger.warn("init: i18next is already initialized. You should call init just once!"), i.isInitialized = !0, i.options.isClone || i.logger.log("initialized", i.options), i.emit("initialized", i.options), w.resolve(k), a(R, k);
+        var y = function(E, k) {
+          i.isInitialized && !i.initializedStoreOnce && i.logger.warn("init: i18next is already initialized. You should call init just once!"), i.isInitialized = !0, i.options.isClone || i.logger.log("initialized", i.options), i.emit("initialized", i.options), w.resolve(k), a(E, k);
         };
         if (i.languages && i.options.compatibilityAPI !== "v1" && !i.isInitialized)
-          return m(null, i.t.bind(i));
-        i.changeLanguage(i.options.lng, m);
+          return y(null, i.t.bind(i));
+        i.changeLanguage(i.options.lng, y);
       };
       return this.options.resources || !this.options.initImmediate ? b() : setTimeout(b, 0), w;
     }
@@ -4584,10 +4584,10 @@ var Rt = function(n) {
         } else
           h = ae({}, l);
         h.lng = h.lng || d.lng, h.lngs = h.lngs || d.lngs, h.ns = h.ns || d.ns, h.keyPrefix = h.keyPrefix || a || d.keyPrefix;
-        var b = o.options.keySeparator || ".", y;
-        return h.keyPrefix && Array.isArray(f) ? y = f.map(function(m) {
-          return "".concat(h.keyPrefix).concat(b).concat(m);
-        }) : y = h.keyPrefix ? "".concat(h.keyPrefix).concat(b).concat(f) : f, o.t(y, h);
+        var b = o.options.keySeparator || ".", m;
+        return h.keyPrefix && Array.isArray(f) ? m = f.map(function(y) {
+          return "".concat(h.keyPrefix).concat(b).concat(y);
+        }) : m = h.keyPrefix ? "".concat(h.keyPrefix).concat(b).concat(f) : f, o.t(m, h);
       };
       return typeof i == "string" ? u.lng = i : u.lngs = i, u.ns = s, u.keyPrefix = a, u;
     }
@@ -5102,20 +5102,20 @@ function eo() {
             };
           });
         }
-        function y(g) {
+        function m(g) {
           var O = new FileReader(), L = b(O);
           return O.readAsArrayBuffer(g), L;
         }
-        function m(g) {
+        function y(g) {
           var O = new FileReader(), L = b(O);
           return O.readAsText(g), L;
         }
-        function E(g) {
+        function R(g) {
           for (var O = new Uint8Array(g), L = new Array(O.length), B = 0; B < O.length; B++)
             L[B] = String.fromCharCode(O[B]);
           return L.join("");
         }
-        function R(g) {
+        function E(g) {
           if (g.slice)
             return g.slice(0);
           var O = new Uint8Array(g.byteLength);
@@ -5123,7 +5123,7 @@ function eo() {
         }
         function k() {
           return this.bodyUsed = !1, this._initBody = function(g) {
-            this._bodyInit = g, g ? typeof g == "string" ? this._bodyText = g : o.blob && Blob.prototype.isPrototypeOf(g) ? this._bodyBlob = g : o.formData && FormData.prototype.isPrototypeOf(g) ? this._bodyFormData = g : o.searchParams && URLSearchParams.prototype.isPrototypeOf(g) ? this._bodyText = g.toString() : o.arrayBuffer && o.blob && u(g) ? (this._bodyArrayBuffer = R(g.buffer), this._bodyInit = new Blob([this._bodyArrayBuffer])) : o.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(g) || f(g)) ? this._bodyArrayBuffer = R(g) : this._bodyText = g = Object.prototype.toString.call(g) : this._bodyText = "", this.headers.get("content-type") || (typeof g == "string" ? this.headers.set("content-type", "text/plain;charset=UTF-8") : this._bodyBlob && this._bodyBlob.type ? this.headers.set("content-type", this._bodyBlob.type) : o.searchParams && URLSearchParams.prototype.isPrototypeOf(g) && this.headers.set("content-type", "application/x-www-form-urlencoded;charset=UTF-8"));
+            this._bodyInit = g, g ? typeof g == "string" ? this._bodyText = g : o.blob && Blob.prototype.isPrototypeOf(g) ? this._bodyBlob = g : o.formData && FormData.prototype.isPrototypeOf(g) ? this._bodyFormData = g : o.searchParams && URLSearchParams.prototype.isPrototypeOf(g) ? this._bodyText = g.toString() : o.arrayBuffer && o.blob && u(g) ? (this._bodyArrayBuffer = E(g.buffer), this._bodyInit = new Blob([this._bodyArrayBuffer])) : o.arrayBuffer && (ArrayBuffer.prototype.isPrototypeOf(g) || f(g)) ? this._bodyArrayBuffer = E(g) : this._bodyText = g = Object.prototype.toString.call(g) : this._bodyText = "", this.headers.get("content-type") || (typeof g == "string" ? this.headers.set("content-type", "text/plain;charset=UTF-8") : this._bodyBlob && this._bodyBlob.type ? this.headers.set("content-type", this._bodyBlob.type) : o.searchParams && URLSearchParams.prototype.isPrototypeOf(g) && this.headers.set("content-type", "application/x-www-form-urlencoded;charset=UTF-8"));
           }, o.blob && (this.blob = function() {
             var g = w(this);
             if (g)
@@ -5136,15 +5136,15 @@ function eo() {
               throw new Error("could not read FormData body as blob");
             return Promise.resolve(new Blob([this._bodyText]));
           }, this.arrayBuffer = function() {
-            return this._bodyArrayBuffer ? w(this) || Promise.resolve(this._bodyArrayBuffer) : this.blob().then(y);
+            return this._bodyArrayBuffer ? w(this) || Promise.resolve(this._bodyArrayBuffer) : this.blob().then(m);
           }), this.text = function() {
             var g = w(this);
             if (g)
               return g;
             if (this._bodyBlob)
-              return m(this._bodyBlob);
+              return y(this._bodyBlob);
             if (this._bodyArrayBuffer)
-              return Promise.resolve(E(this._bodyArrayBuffer));
+              return Promise.resolve(R(this._bodyArrayBuffer));
             if (this._bodyFormData)
               throw new Error("could not read FormData body as text");
             return Promise.resolve(this._bodyText);
@@ -6355,12 +6355,10 @@ const Go = ({
     }), dr.subscribe((f) => {
       t.state.showDrawer = f, t.upDateState(), f ? document.body.className = "bg-scrolling-element-when-modal-active" : document.body.className = "";
     }), Ri.subscribe((f) => {
-      var l, h, p, v, w, b;
+      var l, h, p, v, w, b, m;
       if (f === null && d.length > 0) {
-        const y = document.getElementById(
-          `${s}-wrap-rd-message-${d.length - 1}`
-        );
-        y && y.firstElementChild && (y.firstElementChild.className = y.firstElementChild.className + " " + (((l = e.configs) == null ? void 0 : l.classAnimationMessageLeave) ?? "animation-faded--out"), setTimeout(
+        const y = document.getElementById(`${s}-rd-message`);
+        y && y.lastElementChild && (y.lastElementChild.className = y.lastElementChild.className + " " + (((l = e.configs) == null ? void 0 : l.classAnimationMessageLeave) ?? "animation-faded--out"), setTimeout(
           () => {
             d.pop();
           },
@@ -6373,18 +6371,22 @@ const Go = ({
             {
               id: `${s}-wrap-rd-message-${d.length}`,
               className: (((v = e.configs) == null ? void 0 : v.classWrapMessage) ?? "wrap-rd-message") + " " + (((w = e.configs) == null ? void 0 : w.classAnimationMessageEnter) ?? "animation-faded--in"),
-              children: /* @__PURE__ */ K.jsx(
-                "div",
-                {
-                  className: ((b = e.configs) == null ? void 0 : b.classMessage) ?? "wrap-rd-message",
-                  children: f
-                }
-              )
+              children: /* @__PURE__ */ K.jsx("div", { className: ((b = e.configs) == null ? void 0 : b.classMessage) ?? "rd-message", children: f })
             },
             d.length
           )
         );
-      t.state.messages = [...d], t.upDateState();
+      t.state.messages = d, t.upDateState(), setTimeout(
+        () => {
+          var R;
+          const y = document.getElementById(`${s}-rd-message`);
+          y && y.firstElementChild && (y.firstElementChild.className = y.firstElementChild.className.replaceAll(
+            ((R = e.configs) == null ? void 0 : R.classAnimationMessageEnter) ?? "animation-faded--in",
+            ""
+          ));
+        },
+        ((m = e.configs) == null ? void 0 : m.durationMessageEnter) ?? 150
+      );
     }), window && document && cr.subscribe((f) => {
       if (f === null) {
         if (u > 0) {

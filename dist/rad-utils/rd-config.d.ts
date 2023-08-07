@@ -10,5 +10,6 @@ export interface RdConfig {
     classAnimationMessageEnter?: string;
     classAnimationMessageLeave?: string;
     durationMessageLeave?: number;
+    durationMessageEnter?: number;
     maxAmountMessage?: number;
 }

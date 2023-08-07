@@ -127,7 +127,7 @@ export const RdAppExtends: FC<{
     });
   }, []);
   const [_state, _setState] = useState(_blocRdApp.state);
-  const id  = useId();
+  const id = useId();
 
   useEffect(() => {
     let countQueue = 0;
@@ -159,12 +159,10 @@ export const RdAppExtends: FC<{
 
     rdMessageCompo.subscribe((v) => {
       if (v === null && queueMessage.length > 0) {
-        const currentMessage = document.getElementById(
-          `${id}-wrap-rd-message-${queueMessage.length - 1}`,
-        );
-        if (currentMessage && currentMessage.firstElementChild) {
-          currentMessage.firstElementChild.className =
-            currentMessage.firstElementChild.className +
+        const currentMessage = document.getElementById(`${id}-rd-message`);
+        if (currentMessage && currentMessage.lastElementChild) {
+          currentMessage.lastElementChild.className =
+            currentMessage.lastElementChild.className +
             " " +
             (appProps.configs?.classAnimationMessageLeave ??
               "animation-faded--out");
@@ -190,16 +188,28 @@ export const RdAppExtends: FC<{
                 "animation-faded--in")
             }
           >
-            <div
-              className={appProps.configs?.classMessage ?? "wrap-rd-message"}
-            >
+            <div className={appProps.configs?.classMessage ?? "rd-message"}>
               {v}
             </div>
           </div>,
         );
       }
-      _blocRdApp.state.messages = [...queueMessage];
+      _blocRdApp.state.messages = queueMessage;
       _blocRdApp.upDateState();
+      setTimeout(
+        () => {
+          const currentMessage = document.getElementById(`${id}-rd-message`);
+          if (currentMessage && currentMessage.firstElementChild) {
+            currentMessage.firstElementChild.className =
+              currentMessage.firstElementChild.className.replaceAll(
+                appProps.configs?.classAnimationMessageEnter ??
+                  "animation-faded--in",
+                "",
+              );
+          }
+        },
+        appProps.configs?.durationMessageEnter ?? 150,
+      );
     });
 
     window &&
