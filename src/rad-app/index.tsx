@@ -4,6 +4,7 @@ import {
   ReactPortal,
   useContext,
   useEffect,
+  useId,
   useMemo,
   useState,
 } from "react";
@@ -55,12 +56,13 @@ interface RdAppExtendsState {
   showBottomSheet: boolean;
   showDrawer: boolean;
   modals: ReactPortal[];
+  messages: JSX.Element[];
 }
 
 export const rdIsLoading: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(false);
 export const rdShowMessage: BehaviorSubject<boolean> =
-  new BehaviorSubject<boolean>(false);
+  new BehaviorSubject<boolean>(true);
 export const rdMessageCompo: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
 export const rdQueueModal: BehaviorSubject<JSX.Element | null> =
@@ -84,13 +86,7 @@ export function rdModal(m: JSX.Element | null) {
 }
 
 export function rdMessage(m: JSX.Element | null) {
-  if (m === null) {
-    rdMessageCompo.next(null);
-    rdShowMessage.next(false);
-  } else {
-    rdMessageCompo.next(m);
-    rdShowMessage.next(true);
-  }
+  rdMessageCompo.next(m);
 }
 
 export function rdDrawer(m: JSX.Element | null) {
@@ -122,17 +118,21 @@ export const RdAppExtends: FC<{
       initState: {
         isLoading: false,
         modals: [],
-        showMessage: false,
+        showMessage: true,
         showModel: false,
         showBottomSheet: false,
         showDrawer: false,
+        messages: [],
       },
     });
   }, []);
   const [_state, _setState] = useState(_blocRdApp.state);
+  const id  = useId();
 
   useEffect(() => {
     let countQueue = 0;
+    const queueMessage: JSX.Element[] = [..._blocRdApp.state.messages];
+
     _blocRdApp.stream.subscribe((v) => {
       _setState({ ...v });
     });
@@ -157,8 +157,48 @@ export const RdAppExtends: FC<{
       }
     });
 
-    rdShowMessage.subscribe((v) => {
-      _blocRdApp.state.showMessage = v;
+    rdMessageCompo.subscribe((v) => {
+      if (v === null && queueMessage.length > 0) {
+        const currentMessage = document.getElementById(
+          `${id}-wrap-rd-message-${queueMessage.length - 1}`,
+        );
+        if (currentMessage && currentMessage.firstElementChild) {
+          currentMessage.firstElementChild.className =
+            currentMessage.firstElementChild.className +
+            " " +
+            (appProps.configs?.classAnimationMessageLeave ??
+              "animation-faded--out");
+          setTimeout(
+            () => {
+              queueMessage.pop();
+            },
+            appProps.configs?.durationMessageLeave ?? 150,
+          );
+        }
+      } else if (
+        v !== null &&
+        queueMessage.length < (appProps.configs?.maxAmountMessage ?? 1)
+      ) {
+        queueMessage.unshift(
+          <div
+            id={`${id}-wrap-rd-message-${queueMessage.length}`}
+            key={queueMessage.length}
+            className={
+              (appProps.configs?.classWrapMessage ?? "wrap-rd-message") +
+              " " +
+              (appProps.configs?.classAnimationMessageEnter ??
+                "animation-faded--in")
+            }
+          >
+            <div
+              className={appProps.configs?.classMessage ?? "wrap-rd-message"}
+            >
+              {v}
+            </div>
+          </div>,
+        );
+      }
+      _blocRdApp.state.messages = [...queueMessage];
       _blocRdApp.upDateState();
     });
 
@@ -282,9 +322,24 @@ export const RdAppExtends: FC<{
 
             {/* handler UI message */}
             {_state.showMessage &&
+              _state.messages.length > 0 &&
               window &&
               document &&
-              createPortal(rdMessageCompo.value, document.body, "rd-message")}
+              createPortal(
+                <div
+                  id={`${id}-rd-message`}
+                  className={
+                    appProps.configs?.classOverlayMessage ??
+                    "rd-overlay-message"
+                  }
+                >
+                  {_state.messages.map((d) => {
+                    return <>{d}</>;
+                  })}
+                </div>,
+                document.body,
+                "rd-message",
+              )}
 
             {/* handler UI loading */}
             {_state.isLoading &&
@@ -336,6 +391,8 @@ export function buildRdRootElement(
   const rootEle =
     window && document && (document.getElementById(`${mainId}`) as HTMLElement);
   if (constrant && rootEle) {
+    rootEle.style.pointerEvents = "auto";
+    rootEle.style.boxSizing = "border-box";
     if (constrant.minHeight) {
       rootEle.style.minHeight = constrant.minHeight;
     }

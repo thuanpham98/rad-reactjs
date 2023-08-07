@@ -4,4 +4,11 @@ export interface RdConfig {
     closeModalOnTapOutside?: boolean;
     classBackgroundModel?: string;
     classChildModel?: string;
+    classOverlayMessage?: string;
+    classWrapMessage?: string;
+    classMessage?: string;
+    classAnimationMessageEnter?: string;
+    classAnimationMessageLeave?: string;
+    durationMessageLeave?: number;
+    maxAmountMessage?: number;
 }

@@ -1,0 +1,12 @@
+.wrap-rd-message {
+  pointer-events: none;
+  display: block;
+  box-sizing: border-box;
+  padding: 16px;
+}
+
+.rd-message {
+  pointer-events: auto;
+  display: block;
+  box-sizing: border-box;
+}
