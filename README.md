@@ -1,0 +1,1 @@
+This library aims to create a hybrid between framework and library, providing faster and better quality web building tools.
