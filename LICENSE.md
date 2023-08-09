@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2023 R&D Team, © UnicloudGroup 2022. All Rights Reserved.
+Copyright (c) 2023 Pham Minh Thuan. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
