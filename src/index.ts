@@ -57,4 +57,5 @@ export {
   RdViewportContext,
   useRdViewport,
   useRdQuery,
+  StreamBuilder,
 } from "./rad-components";
