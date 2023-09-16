@@ -31,7 +31,7 @@ interface StreamBuilderProps<D, E, C> {
     builder: (context?: C, snapshot?: SnapShot<D, E>) => ReactNode;
     validate?: (d: D) => E | null;
     context?: C;
-    selector?:()=>boolean;
+    selector?: (preState: D | null, nextState: D | null) => boolean;
 }
 
 export const StreamBuilder = <D, E, C>({
@@ -40,6 +40,7 @@ export const StreamBuilder = <D, E, C>({
     stream,
     validate,
     context,
+    selector,
 }: StreamBuilderProps<D, E, C>) => {
     const [state, setState] = useState<SnapShot<D, E>>({
         connectionState: 'waiting',
@@ -51,8 +52,13 @@ export const StreamBuilder = <D, E, C>({
     useEffect(() => {
         const currentSnap = { ...state };
         stream.subscribe((v) => {
+
             // stream is close
             if (currentSnap.connectionState === 'done') {
+                return;
+            }
+            // selector
+            if (selector && !selector(currentSnap.data, v)) {
                 return;
             }
             // check error
@@ -66,26 +72,19 @@ export const StreamBuilder = <D, E, C>({
             } else {
                 currentSnap.hasError = false;
             }
-
             // check data
             if (v !== null && v !== undefined) {
                 currentSnap.hasData = true;
             } else {
                 currentSnap.hasData = false;
             }
-
-            // setNew State
-            setState({
-                data: v,
-                connectionState: currentSnap.connectionState,
-                error: currentSnap.error,
-                hasError: currentSnap.hasError,
-                hasData: currentSnap.hasData,
-            });
+            currentSnap.data = { ...v };
+            // new state
+            setState({ ...currentSnap });
         });
 
         return () => {
-            currentSnap.connectionState='done';
+            currentSnap.connectionState = 'done';
         }
     }, []);
 

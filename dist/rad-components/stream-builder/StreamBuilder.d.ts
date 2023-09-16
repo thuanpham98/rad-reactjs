@@ -28,7 +28,7 @@ interface StreamBuilderProps<D, E, C> {
     builder: (context?: C, snapshot?: SnapShot<D, E>) => ReactNode;
     validate?: (d: D) => E | null;
     context?: C;
-    selector?: () => boolean;
+    selector?: (preState: D | null, nextState: D | null) => boolean;
 }
-export declare const StreamBuilder: <D, E, C>({ builder, initData, stream, validate, context, }: StreamBuilderProps<D, E, C>) => ReactNode;
+export declare const StreamBuilder: <D, E, C>({ builder, initData, stream, validate, context, selector, }: StreamBuilderProps<D, E, C>) => ReactNode;
 export {};
