@@ -33,7 +33,7 @@ export class RdBloc<T> {
   }
 }
 
-export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
+export function useRdBloc<T>(data: T): [T, (v?: T) => void,RdStream<T>] {
   const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
   const [_state, _setState] = useState<T>(_bloc.state);
 
@@ -51,5 +51,5 @@ export function useRdBloc<T>(data: T): [T, (v?: T) => void] {
     };
   }, [_bloc.stream]);
 
-  return [_bloc.state, updateState];
+  return [_bloc.state, updateState,_bloc.stream];
 }

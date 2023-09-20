@@ -5664,7 +5664,7 @@ function Ko(n) {
     r({ ...s });
   }), () => {
     e.stream.complete();
-  }), [e.stream]), [e.state, i];
+  }), [e.stream]), [e.state, i, e.stream];
 }
 var ar = function(n, e) {
   return ar = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(t, r) {
@@ -6732,7 +6732,7 @@ function lu() {
   return gr(zn);
 }
 const cu = Us, fu = ({
-  builder: n,
+  children: n,
   initData: e,
   stream: t,
   validate: r,

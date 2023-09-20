@@ -28,14 +28,14 @@ interface SnapShot<D, E> {
 interface StreamBuilderProps<D, E, C> {
     initData?: D;
     stream: StreamData<D>;
-    builder: (context?: C, snapshot?: SnapShot<D, E>) => ReactNode;
+    children: (context?: C, snapshot?: SnapShot<D, E>) => ReactNode;
     validate?: (d: D) => E | null;
     context?: C;
     selector?: (preState: D | null, nextState: D | null) => boolean;
 }
 
 export const StreamBuilder = <D, E, C>({
-    builder,
+    children,
     initData,
     stream,
     validate,
@@ -88,5 +88,5 @@ export const StreamBuilder = <D, E, C>({
         }
     }, []);
 
-    return builder(context, state);
+    return children(context, state);
 }
