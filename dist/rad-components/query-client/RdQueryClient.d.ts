@@ -1,5 +1,7 @@
 import { QueryClient } from "@tanstack/react-query";
-export declare const RdQueryClient: React.FunctionComponent<{
+interface RdQueryClientProps {
     children: React.ReactNode;
     queryClient: QueryClient;
-}>;
+}
+export declare const RdQueryClient: React.FunctionComponent<RdQueryClientProps>;
+export {};

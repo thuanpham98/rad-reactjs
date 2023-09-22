@@ -1,0 +1,8 @@
+src/
+.eslintrc.json
+.gitignore
+.prettierrc.json
+*.tgz
+vite.config.ts
+tsconfig.json
+tsconfig.node.json
