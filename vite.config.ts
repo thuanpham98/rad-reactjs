@@ -18,9 +18,9 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      fileName: 'rad-ts',
+      fileName: 'radts-reactjs',
       formats: ['cjs', 'es'],
-      name: 'rad-ts',
+      name: 'radts-reactjs',
     },
     rollupOptions: {
       external: ['react', 'react-dom'],

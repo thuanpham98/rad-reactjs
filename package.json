@@ -1,5 +1,5 @@
 {
-  "name": "@rad/rad-ts",
+  "name": "@radts/reactjs",
   "version": "1.1.3",
   "type": "module",
   "license": "MIT",
@@ -17,13 +17,13 @@
     "dist",
     "dist/*.css"
   ],
-  "main": "./dist/rad-ts.cjs",
-  "module": "./dist/rad-ts.js",
+  "main": "./dist/radts-reactjs.cjs",
+  "module": "./dist/radts-reactjs.js",
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/rad-ts.js",
-      "require": "./dist/rad-ts.cjs"
+      "import": "./dist/radts-reactjs.js",
+      "require": "./dist/radts-reactjs.cjs"
     },
     "./dist/*.css": {
       "import": "./dist/*.css",
@@ -46,6 +46,7 @@
     "tslib": "^2.5.0"
   },
   "devDependencies": {
+    "@types/node": "^20.6.3",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
