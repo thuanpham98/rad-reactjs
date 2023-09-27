@@ -10,4 +10,3 @@ export declare class RdBloc<T> {
     get state(): T;
     upDateState(s?: T): void;
 }
-export declare function useRdBloc<T>(data: T): [T, (v?: T) => void, RdStream<T>];

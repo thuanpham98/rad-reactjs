@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import { RdStream } from "./rd-stream";
 
 export class RdBloc<T> {
@@ -31,25 +30,4 @@ export class RdBloc<T> {
     }
     this._state && this.stream.next(this._state);
   }
-}
-
-export function useRdBloc<T>(data: T): [T, (v?: T) => void, RdStream<T>] {
-  const _bloc = useRef<RdBloc<T>>(new RdBloc<T>({ initState: data })).current;
-  const [_state, _setState] = useState<T>(_bloc.state);
-
-  function updateState(s?: T) {
-    _bloc.upDateState(s);
-  }
-
-  useEffect(() => {
-    _bloc.stream.subscribe((v) => {
-      _setState({ ...v });
-    });
-
-    return () => {
-      _bloc.stream.complete();
-    };
-  }, [_bloc.stream]);
-
-  return [_bloc.state, updateState, _bloc.stream];
 }
