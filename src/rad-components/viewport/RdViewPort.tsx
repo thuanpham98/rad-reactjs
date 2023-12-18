@@ -53,7 +53,7 @@ export const RdViewport: FC<{ children: React.ReactNode }> = ({
       window && window.removeEventListener("resize", handleResize);
       window &&
         window.removeEventListener("touchstart", () => {
-          console.log("done touch start");
+          console.debug("done touch start");
         });
     };
   }, []);
