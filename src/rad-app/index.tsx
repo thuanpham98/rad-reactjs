@@ -59,8 +59,10 @@ interface RdAppExtendsState {
 
 export const rdIsLoading: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(false);
+
 export const rdShowMessage: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(true);
+
 export const rdMessageCompo: BehaviorSubject<{
   element: JSX.Element | null;
   duration?: number;
@@ -68,12 +70,21 @@ export const rdMessageCompo: BehaviorSubject<{
   element: null,
   duration: 1000,
 });
-export const rdQueueModal: BehaviorSubject<JSX.Element | null> =
-  new BehaviorSubject<JSX.Element | null>(null);
+
+export const rdQueueModal: BehaviorSubject<{
+  modal: JSX.Element | null;
+  closeOnTapBackground: boolean;
+}> = new BehaviorSubject<{
+  modal: JSX.Element | null;
+  closeOnTapBackground: boolean;
+}>({ modal: null, closeOnTapBackground: true });
+
 export const rdBottomSheetCompo: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
+
 export const rdShowDrawer: BehaviorSubject<boolean> =
   new BehaviorSubject<boolean>(false);
+
 export const rdDrawerCompo: BehaviorSubject<JSX.Element | null> =
   new BehaviorSubject<JSX.Element | null>(null);
 
@@ -84,8 +95,11 @@ export function rdLoading(open: boolean) {
   rdIsLoading.next(open);
 }
 
-export function rdModal(m: JSX.Element | null) {
-  rdQueueModal.next(m);
+export function rdModal(m: JSX.Element | null, closeOnTapBackground?: boolean) {
+  rdQueueModal.next({
+    modal: m,
+    closeOnTapBackground: closeOnTapBackground ?? true,
+  });
 }
 
 export function rdMessage(m: JSX.Element | null, d?: number) {
@@ -131,7 +145,8 @@ export const RdAppExtends: FC<{
     let countQueue = 0;
     const queueMessage: JSX.Element[] = [];
 
-    state?.isLoading &&
+    window &&
+      document && state?.isLoading &&
       rdIsLoading.subscribe((v) => {
         state.isLoading = v;
         setState();
@@ -142,7 +157,8 @@ export const RdAppExtends: FC<{
         }
       });
 
-    state?.showDrawer &&
+    window &&
+      document && state?.showDrawer &&
       rdShowDrawer.subscribe((v) => {
         state.showDrawer = v;
         setState();
@@ -153,7 +169,8 @@ export const RdAppExtends: FC<{
         }
       });
 
-    state?.messages &&
+    window &&
+      document && state?.messages &&
       rdMessageCompo.subscribe((v) => {
         if (
           v !== null &&
@@ -219,7 +236,7 @@ export const RdAppExtends: FC<{
       document &&
       state?.modals &&
       rdQueueModal.subscribe((v) => {
-        if (v === null) {
+        if (v.modal === null) {
           if (countQueue > 0) {
             countQueue--;
             const currentModel = document.getElementById(
@@ -247,15 +264,21 @@ export const RdAppExtends: FC<{
                     appProps.configs?.classBackgroundModel ?? ""
                   }`}
                   onTapBackGround={() => {
-                    if (appProps.configs?.closeModalOnTapOutside) {
-                      rdQueueModal.next(null);
+                    if (
+                      appProps.configs?.closeModalOnTapOutside &&
+                      v.closeOnTapBackground
+                    ) {
+                      rdQueueModal.next({
+                        modal: null,
+                        closeOnTapBackground: true,
+                      });
                     }
                   }}
                   onTapChildren={(e) => {
                     e.stopPropagation();
                   }}
                 >
-                  {v}
+                  {v.modal}
                 </RdOverlay>,
                 document.body,
                 `rd-modals-${idx}`,
@@ -272,7 +295,8 @@ export const RdAppExtends: FC<{
         }
       });
 
-    rdBottomSheetCompo.subscribe((v) => {
+    window &&
+      document && rdBottomSheetCompo.subscribe((v) => {
       if (v === null) {
         document.body.className = "";
         state?.showBottomSheet &&
