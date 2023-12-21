@@ -146,7 +146,8 @@ export const RdAppExtends: FC<{
     const queueMessage: JSX.Element[] = [];
 
     window &&
-      document && state?.isLoading &&
+      document &&
+      state?.isLoading &&
       rdIsLoading.subscribe((v) => {
         state.isLoading = v;
         setState();
@@ -158,7 +159,8 @@ export const RdAppExtends: FC<{
       });
 
     window &&
-      document && state?.showDrawer &&
+      document &&
+      state?.showDrawer &&
       rdShowDrawer.subscribe((v) => {
         state.showDrawer = v;
         setState();
@@ -170,7 +172,8 @@ export const RdAppExtends: FC<{
       });
 
     window &&
-      document && state?.messages &&
+      document &&
+      state?.messages &&
       rdMessageCompo.subscribe((v) => {
         if (
           v !== null &&
@@ -296,23 +299,24 @@ export const RdAppExtends: FC<{
       });
 
     window &&
-      document && rdBottomSheetCompo.subscribe((v) => {
-      if (v === null) {
-        document.body.className = "";
-        state?.showBottomSheet &&
-          setTimeout(() => {
-            state.showBottomSheet = false;
-            setState();
-          }, 80);
-      } else {
-        document.body.className = "bg-scrolling-element-when-modal-active";
-        state?.showBottomSheet &&
-          setTimeout(() => {
-            state.showBottomSheet = true;
-            setState();
-          }, 80);
-      }
-    });
+      document &&
+      rdBottomSheetCompo.subscribe((v) => {
+        if (v === null) {
+          document.body.className = "";
+          state?.showBottomSheet &&
+            setTimeout(() => {
+              state.showBottomSheet = false;
+              setState();
+            }, 80);
+        } else {
+          document.body.className = "bg-scrolling-element-when-modal-active";
+          state?.showBottomSheet &&
+            setTimeout(() => {
+              state.showBottomSheet = true;
+              setState();
+            }, 80);
+        }
+      });
 
     // turn of loading and component of old page
     window &&
