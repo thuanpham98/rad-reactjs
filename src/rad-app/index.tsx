@@ -259,6 +259,7 @@ export const RdAppExtends: FC<{
             state.modals.push(
               createPortal(
                 <RdOverlay
+                  key={`rd-modals-${idx}`}
                   id={`rd-modals-${idx}`}
                   classChildren={`animation-scale--up animation-faded--in ${
                     appProps.configs?.classChildModel ?? ""
@@ -387,11 +388,7 @@ export const RdAppExtends: FC<{
               )}
 
             {/* queue potal */}
-            {state?.modals &&
-              state.modals.length > 0 &&
-              state.modals.map((d) => {
-                return d;
-              })}
+            {state?.modals && state.modals.length > 0 && state.modals}
 
             {/* bottomsheet */}
             {state?.showBottomSheet &&

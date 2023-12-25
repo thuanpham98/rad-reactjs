@@ -10,6 +10,10 @@ export class RdStream<T> {
     this.subject = new RdBehaviorSubject<T>(init);
   }
 
+  public get value(): T {
+    return this.subject.value;
+  }
+
   public next(t: T) {
     if (!this.closed) {
       this.subject.value = t;
