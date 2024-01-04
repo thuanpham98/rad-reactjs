@@ -133,7 +133,7 @@ export const RdAppExtends: FC<{
   const [state, setState] = useRdBloc<RdAppExtendsState>({
     isLoading: false,
     modals: [],
-    showMessage: true,
+    showMessage: false,
     showModel: false,
     showBottomSheet: false,
     showDrawer: false,
@@ -147,7 +147,6 @@ export const RdAppExtends: FC<{
 
     window &&
       document &&
-      state?.isLoading &&
       rdIsLoading.subscribe((v) => {
         state.isLoading = v;
         setState();
@@ -160,7 +159,6 @@ export const RdAppExtends: FC<{
 
     window &&
       document &&
-      state?.showDrawer &&
       rdShowDrawer.subscribe((v) => {
         state.showDrawer = v;
         setState();
@@ -173,7 +171,6 @@ export const RdAppExtends: FC<{
 
     window &&
       document &&
-      state?.messages &&
       rdMessageCompo.subscribe((v) => {
         if (
           v !== null &&
@@ -237,7 +234,6 @@ export const RdAppExtends: FC<{
 
     window &&
       document &&
-      state?.modals &&
       rdQueueModal.subscribe((v) => {
         if (v.modal === null) {
           if (countQueue > 0) {
@@ -357,10 +353,8 @@ export const RdAppExtends: FC<{
               window &&
               document &&
               createPortal(rdDrawerCompo.value, document.body, "rd-drawer")}
-
             {/* handler UI message */}
-            {state?.showMessage &&
-              state.messages.length > 0 &&
+            {state.messages.length > 0 &&
               window &&
               document &&
               createPortal(
@@ -376,9 +370,8 @@ export const RdAppExtends: FC<{
                 document.body,
                 "rd-message",
               )}
-
             {/* handler UI loading */}
-            {state?.isLoading &&
+            {state.isLoading &&
               window &&
               document &&
               createPortal(
@@ -386,12 +379,10 @@ export const RdAppExtends: FC<{
                 document.body,
                 "rd-loader",
               )}
-
             {/* queue potal */}
-            {state?.modals && state.modals.length > 0 && state.modals}
-
+            {state.modals.length > 0 && state.modals}
             {/* bottomsheet */}
-            {state?.showBottomSheet &&
+            {state.showBottomSheet &&
               window &&
               document &&
               createPortal(
